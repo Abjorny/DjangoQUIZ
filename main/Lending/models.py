@@ -1,8 +1,38 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 import openpyxl
+import os
+import uuid
 
 
+def get_unique_filename(instance, filename, upload_dir):
+
+    ext = filename.split('.')[-1].lower() 
+
+    for _ in range(10): 
+        unique_name = f"{uuid.uuid4().hex}.{ext}"
+        full_path = os.path.join(upload_dir, unique_name)
+
+        if hasattr(instance, 'file'):
+            media_root = os.path.dirname(instance.file.storage.path(''))  # определяем MEDIA_ROOT из storage
+        else:
+            media_root = ''
+
+        absolute_path = os.path.join(media_root, full_path)
+
+        if not os.path.exists(absolute_path):
+            return full_path
+
+
+
+def random_quiz_filename(instance, filename):
+    return get_unique_filename(instance, filename, 'lending/data/quizPhotos')
+
+def random_icon_filename(instance, filename):
+    return get_unique_filename(instance, filename, 'lending/data/icons')
+
+def random_example_filename(instance, filename):
+    return get_unique_filename(instance, filename, 'lending/data/examplesOfWork')
 
 class Settings(models.Model):
     excelTable = models.FileField(
@@ -73,22 +103,24 @@ class Settings(models.Model):
     def __str__(self):
         return "Настройки"
 
+
 class ImagesQuiz(models.Model):
     file = models.FileField(
-        upload_to="lending/data/quizPhotos/",
+        upload_to=random_quiz_filename,
         verbose_name="Файл квиза"
     )
 
     utm_content = models.JSONField(
-        verbose_name = "UTM контент метка",
+        verbose_name="UTM контент метка",
         default=list
     )
+
     def __str__(self):
         return self.file.url
-     
+
     class Meta:
         verbose_name = "Изображение квиза"
-        verbose_name_plural = "Изображения квизов" 
+        verbose_name_plural = "Изображения квизов"
         
 class UploadInfo(models.Model):
     app = models.IntegerField()
@@ -156,29 +188,31 @@ class Icons(models.Model):
         max_length=255,
         verbose_name="Название логотипа"
     )
-    
+
     file = models.FileField(
-        upload_to="lending/data/icons/",
+        upload_to=random_icon_filename,
         verbose_name="Файл иконки"
     )
+
     class Meta:
         verbose_name = "Иконка"
         verbose_name_plural = "Иконки"
+
     def __str__(self):
         return self.title
 
 class ImageForExampleOfWork(models.Model):
     file = models.FileField(
-        upload_to="lending/data/examplesOfWork/",
+        upload_to=random_example_filename,
         verbose_name="Файл примера работ"
     )
 
     def __str__(self):
-        return self.file.url 
+        return self.file.url
 
     class Meta:
         verbose_name = "Изображение примера работы"
-        verbose_name_plural = "Изображения примеров работ" 
+        verbose_name_plural = "Изображения примеров работ"
 
 class LendingPage(models.Model):
     
