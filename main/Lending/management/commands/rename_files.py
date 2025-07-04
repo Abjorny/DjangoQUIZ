@@ -1,5 +1,6 @@
 import os
 import uuid
+from django.core.management.base import BaseCommand
 from django.conf import settings
 from Lending.models import ImagesQuiz, Icons, ImageForExampleOfWork
 
@@ -10,7 +11,7 @@ def generate_random_filename(original_filename, upload_dir):
 def rename_files_for_model(model_class, upload_dir):
     queryset = model_class.objects.all()
     for obj in queryset:
-        old_path = obj.file.path 
+        old_path = obj.file.path
         new_rel_path = generate_random_filename(os.path.basename(old_path), upload_dir)
         new_abs_path = os.path.join(settings.MEDIA_ROOT, new_rel_path)
 
@@ -23,10 +24,14 @@ def rename_files_for_model(model_class, upload_dir):
 
         print(f"{model_class.__name__}: {old_path} -> {new_abs_path}")
 
-def main():
-    rename_files_for_model(ImagesQuiz, 'lending/data/quizPhotos')
-    rename_files_for_model(Icons, 'lending/data/icons')
-    rename_files_for_model(ImageForExampleOfWork, 'lending/data/examplesOfWork')
+class Command(BaseCommand):
+    help = 'Переименовывает файлы в моделях с рандомными именами'
 
-if __name__ == "__main__":
-    main()
+    def handle(self, *args, **options):
+        self.stdout.write('Начинаем переименование файлов...')
+
+        rename_files_for_model(ImagesQuiz, 'lending/data/quizPhotos')
+        rename_files_for_model(Icons, 'lending/data/icons')
+        rename_files_for_model(ImageForExampleOfWork, 'lending/data/examplesOfWork')
+
+        self.stdout.write(self.style.SUCCESS('Готово! Все файлы переименованы.'))
