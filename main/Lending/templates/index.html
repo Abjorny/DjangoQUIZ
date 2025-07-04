@@ -1,0 +1,303 @@
+{% load static %}
+{% csrf_token %}
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>{{ landingPage.title_meta }}</title>
+	<meta name="description" content="{{ landingPage.description_meta }}">
+	<meta charset="UTF-8" />
+	{{ head | safe }}
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?_v=20250109001415" />
+	<link rel="stylesheet" href="{% static 'css/style.min.css' %}?v=1.0.4" />
+
+	<link rel="shortcut icon" href="{% static 'img/header/logo.png' %}" />
+	<script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/inputmask/dist/inputmask.min.js"></script>
+	<script defer type="module" src="{% static 'js/modalPhone.js' %}"></script>
+	<script defer src="{% static 'js/generateQuiz.js' %}"></script>
+	<script defer src="{% static 'js/app.js' %}"></script>
+	<script defer type="module" src="{% static 'js/quizCall.js' %}"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<style>
+		.radio-form__item input:checked+label::before {
+			background: url({{landingPage.imageCheckBox}}) 0 0 / contain no-repeat;
+		}
+
+		.quiz-button-prev::before {
+
+			background: url({{landingPage.imageArrow}}) center / cover no-repeat;
+		}
+
+		.policy label::before {
+			background: url({{landingPage.imageCheckBoxPolit}}) 0 0 / cover no-repeat;
+		}
+
+		.button button {
+			background-color: {
+					{
+					accentColor
+				}
+			}
+
+			;
+		}
+
+		.policy label a {
+			color: {
+					{
+					accentColor
+				}
+			}
+
+			;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="wrapper">
+		<header class="header fix-block">
+			<div class="header__container">
+				<div class="header__row">
+					<a href="javascript:void(0)" class="header__logo logo">
+						<div class="logo__image">
+							<picture>
+								<img src="{{landingPage.logo}}" alt="logo" />
+							</picture>
+						</div>
+						<div class="logo__text">
+							<div class="logo__title">
+								<h1>{{ landingPage.title|safe }}</h1>
+							</div>
+							<div class="logo__subtitle">
+								<p>{{ landingPage.description|safe }}</p>
+							</div>
+						</div>
+					</a>
+					<div class="header__right">
+						<div class="header__phone">
+							<a href="tel:{{ landingPage.number|safe }}" class="header__tel">
+								{{landingPage.number|safe}}</a>
+							<button data-popup-open="popup-open" class="header__tel-text"
+								style="color: {{accentColor}}">
+								Обратный звонок
+							</button>
+						</div>
+						<div class="header__socials">
+							<a href="https://wa.me/{{landingPage.number_whatsap|safe}}" target="_blank"
+								class="header__social">
+								<img src="{% static 'img/header/wa.svg'%}" alt="whatsapp" />
+								<b>whatsapp</b>
+							</a>
+							<a href="https://t.me/{{landingPage.username_telegram|safe}}" target="_blank"
+								class="header__social">
+								<img src="{% static 'img/header/tg.svg'%}" alt="telegram" />
+								<b>Telegram</b>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<main class="page">
+			<div class="quiz"
+				style="position: relative; background: url(	'{{ landingPage.preview_slider }}') center / cover no-repeat;">
+
+				<div class="quiz__container" style="position: relative;z-index: 1;">
+					<div id="title-quiz" class="quiz__title-subtitle">
+						<div class="quiz__title">
+							<h2>
+								{{ landingPage.title_slider|safe }}
+							</h2>
+						</div>
+						<div class="quiz__subtitle">
+							<p id="quiz-title-model"></p>
+						</div>
+						<div class="quiz__subtitle quiz__subtitle_fz">
+							<p id="quiz-title-model-end"></p>
+						</div>
+					</div>
+					<div id="quiz-slider" class="quiz__slider swiper">
+						<div class="quiz__wrapper swiper-wrapper" id="container-model-quiz">
+
+							<div class="quiz__slide swiper-slide">
+								<div class="quiz__preloader">
+									<div class="quiz__text-preloader">
+										<span>Рассчитываем</span>
+									</div>
+									<div class="quiz__preloader-circle">
+										<span></span>
+									</div>
+								</div>
+								<div id="quiz-end" class="quiz__content">
+									<form class="radio-form" action="#">
+										<div class="radio-form__items">
+											<div class="radio-form__item">
+												<input value="phone" type="radio" id="phone" name="point" />
+												<label for="phone" id="label-phone"></label>
+											</div>
+											<div class="radio-form__item">
+												<input value="whatapp" checked type="radio" id="whatapp" name="point" />
+												<label for="whatapp" id="label-whatsapp"> text
+													<span class="radio-form__color">WhatsApp</span></label>
+											</div>
+											<div class="radio-form__item">
+												<input value="telegram" type="radio" id="tg" name="point" />
+												<label for="tg" id="label-tg"> text
+													<span
+														class="radio-form__color radio-form__color_blue">Telegram</span></label>
+											</div>
+										</div>
+										<div class="bottom-form">
+											<div class="bottom-form__contact">
+												<input id="contact-form" type="text" name="contact"
+													placeholder="Введите Ваш WhatsApp" value="" />
+												<span class="bottom-form__invalid invalid">Не заполнено поле</span>
+											</div>
+											<div class="bottom-form__policy policy">
+												<input type="checkbox" checked id="policy" name="privacy_policy" />
+												<label for="policy">Нажимая на кнопку “Получить результат”, Вы даете
+													согласие на обработку персональных данных и
+													соглашаетесь c
+													<a href="{% url 'polit' %}" target="_blank">Политикой
+														конфиденциальности</a></label>
+											</div>
+											<div class="button">
+												<button onclick='{{ landingPage.target_quiz | safe }}' type="button"
+													id="button-end-model-quiz"></button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+
+							<!-- "Экран" 4 -end -->
+						</div>
+					</div>
+
+				</div>
+				<div style="top:0px;
+				position: absolute; width: 100%; height: 100%; 
+				background-color: rgba(0,0,0,{{ landingPage.blackout }})"></div>
+
+			</div>
+			<!-- Квиз - end -->
+
+			<!-- Как мы работаем -->
+			<div class="how-work">
+				<div class="how-work__container">
+					<div class="how-work__row">
+						{% for icon in landingPage.icons %}
+						<div class="how-work__card">
+							<div class="how-work__icon">
+								<img src="{{ icon.file }}" alt="icon" loading="lazy" />
+							</div>
+							<div class="how-work__text">
+								<p>{{ icon.title }}</p>
+							</div>
+						</div>
+						{% endfor %}
+
+					</div>
+				</div>
+			</div>
+	</div>
+	<!-- Как мы работаем - end -->
+	<!-- portfolio -->
+	<section class="portfolio">
+		<div class="portfolio__container">
+			<div class="portfolio__title title">
+				<h3>{{ landingPage.title_swaper }}</h3>
+			</div>
+			<div class="hardest-slider-wrapper">
+				<div class="hardest-slider-content">
+					<div class="hardest-slider">
+						<img id="image-slide" src="../img/hardest/1/image(1).jpg" alt="Main Slider Image"
+							class="hardest-main-image locked">
+						<div class="hardest-controls">
+							<button class="hardest-prev-btn">
+								<img src="{% static 'img/hardest/left.svg'%}" alt="Previous" class="l">
+							</button>
+							<button class="hardest-next-btn">
+								<img src="{% static 'img/hardest/right.svg'%}" alt="Next" class="l">
+							</button>
+						</div>
+					</div>
+					<div class="hardest-description"></div>
+				</div>
+			</div>
+			<div class="hardest-thumbnails">
+			</div>
+		</div>
+	</section>
+	<!-- portfolio-end -->
+	</main>
+	</div>
+	<!-- popup -->
+	<div class="popup" data-popup="popup-open">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button type="button" class="popup__close"></button>
+				<div class="popup__title-subtitle">
+					<div class="popup__title">
+						<b>Получить консультацию</b>
+					</div>
+					<div class="popup__subtitle">
+						<p>
+							Оставьте Ваш телефон и мы обязательно перезвоним и ответим на
+							все Ваши вопросы
+						</p>
+					</div>
+				</div>
+				<form action="#" class="popup__form form">
+					<div class="form__item">
+						<input id="modal-name" type="text" name="username" placeholder="Ваше имя" value="" />
+						<span class="form__invalid invalid">Не заполнено поле</span>
+					</div>
+					<div class="form__item">
+						<input id="modal-phone" type="tel" name="phone" placeholder="Ваш телефон" value="" />
+						<span class="form__invalid invalid">Не заполнено поле</span>
+					</div>
+					<div class="form__policy policy">
+						<input type="checkbox" checked id="policy_popup" name="privacy_policy" />
+						<label for="policy_popup">Нажимая на кнопку “Получить результат”, Вы даете согласие на
+							обработку персональных данных и соглашаетесь c
+							<a href="{% url 'polit' %}" target="_blank">Политикой конфиденциальности</a></label>
+					</div>
+					<div class="button">
+						<button type="button" id="sendMessageButton">Получить консультацию</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div id="script-params" data-chat-id="{{ landingPage.chatid }}"></div>
+	</div>
+	<!-- popup - end -->
+	<button id="quizButton" onClick='{{ landingPage.target_quiz | safe }}' style="display: none;"></button>
+	<button id="feedbackButton" onClick='{{ landingPage.target_feedback | safe }}' style="display: none;"></button>
+	<button id="quizButtonSet" onClick='{{ landingPage.target_quiz_set | safe }}' style="display: none;"></button>
+
+	<script defer>
+		function stripHTML(html) {
+			const div = document.createElement("div");
+			div.innerHTML = html;
+			return div.textContent || div.innerText || "";
+		}
+
+		const quizzes = {{ quizzes_json | safe }};
+		const landing = {{ landingPage | safe }};
+		const examples = {{ landingPage.examples | safe }};
+		const accentColor = '{{accentColor | safe}}';
+
+		const cleanTitle = stripHTML('{{ landingPage.title_slider|safe }}');
+		const cleanTitleSlider = stripHTML(quizzes.endFrame.title);
+
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js?_v=20250109001415"></script>
+</body>
+
+</html>
