@@ -1,7 +1,7 @@
 import os
 import uuid
 from django.conf import settings
-from .models import ImagesQuiz, Icons, ImageForExampleOfWork 
+from Lending.models import ImagesQuiz, Icons, ImageForExampleOfWork
 
 def generate_random_filename(original_filename, upload_dir):
     ext = original_filename.split('.')[-1].lower()
