@@ -32,6 +32,5 @@ class Command(BaseCommand):
 
         rename_files_for_model(ImagesQuiz, 'lending/data/quizPhotos')
         rename_files_for_model(Icons, 'lending/data/icons')
-        rename_files_for_model(ImageForExampleOfWork, 'lending/data/examplesOfWork')
 
         self.stdout.write(self.style.SUCCESS('Готово! Все файлы переименованы.'))
