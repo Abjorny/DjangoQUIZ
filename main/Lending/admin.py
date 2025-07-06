@@ -50,7 +50,7 @@ class SettingsAdmin(admin.ModelAdmin):
             return False  
         return True 
 @admin.register(ImagesQuiz)
-class ImageQuizAdmin(ImagesQuiz):
+class ImageQuizAdmin(admin.ModelAdmin):
     list_display = ('title',) 
     search_fields = ('title',)  
 
