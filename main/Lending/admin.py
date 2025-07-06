@@ -49,6 +49,9 @@ class SettingsAdmin(admin.ModelAdmin):
         if Settings.objects.exists():
             return False  
         return True 
+@admin.register(ImagesQuiz)
+class ImageQuizAdmin(ImagesQuiz):
+    list_display = ('title',) 
+    search_fields = ('title',)  
 
-admin.site.register(ImagesQuiz)
 admin.site.register(UploadInfo)
