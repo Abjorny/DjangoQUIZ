@@ -1,5 +1,5 @@
 from django.contrib import admin
-
+from django.utils.html import format_html
 
 from .models import Settings,UploadInfo, Quiz, EndFrame, \
                     LendingPage, Icons, ImageForExampleOfWork, \
@@ -7,8 +7,18 @@ from .models import Settings,UploadInfo, Quiz, EndFrame, \
 
 
 @admin.register(ImageForExampleOfWork)
-class QuizAdmin(admin.ModelAdmin):
-    pass
+class ImageForExampleOfWorkAdmin(admin.ModelAdmin):
+    list_display = ('title', 'file_link')
+
+    def file_link(self, obj):
+        if obj.file:
+            return format_html(
+                '<a href="#" onclick="navigator.clipboard.writeText(\'{}\'); alert(\'Ссылка скопирована!\'); return false;">📋 Скопировать ссылку</a>',
+                obj.file.url
+            )
+        return "-"
+    file_link.short_description = "Скопировать ссылку"
+
 
 @admin.register(Icons)
 class QuizAdmin(admin.ModelAdmin):

@@ -23,8 +23,6 @@ def get_unique_filename(instance, filename, upload_dir):
         if not os.path.exists(absolute_path):
             return full_path
 
-
-
 def random_quiz_filename(instance, filename):
     return get_unique_filename(instance, filename, 'lending/data/quizPhotos')
 
@@ -109,14 +107,29 @@ class ImagesQuiz(models.Model):
         upload_to=random_quiz_filename,
         verbose_name="Файл квиза"
     )
+    title = models.CharField(
+        max_length=255,
+        blank=True,
+        verbose_name="Название файла"
+    )
 
     utm_content = models.JSONField(
         verbose_name="UTM контент метка",
         default=list
     )
 
+    def save(self, *args, **kwargs):
+        if not self.title and self.file:
+            try:
+                original_name = self.file.file.name  #
+            except Exception:
+                original_name = self.file.name 
+
+            self.title = os.path.basename(original_name)
+        super().save(*args, **kwargs)
+
     def __str__(self):
-        return self.file.url
+        return self.title or self.file.url
 
     class Meta:
         verbose_name = "Изображение квиза"
@@ -201,14 +214,30 @@ class Icons(models.Model):
     def __str__(self):
         return self.title
 
+
 class ImageForExampleOfWork(models.Model):
     file = models.FileField(
         upload_to=random_example_filename,
         verbose_name="Файл примера работ"
     )
+    title = models.CharField(
+        max_length=255,
+        blank=True,
+        verbose_name="Название файла"
+    )
+
+    def save(self, *args, **kwargs):
+        if not self.title and self.file:
+            try:
+                original_name = self.file.file.name  #
+            except Exception:
+                original_name = self.file.name 
+
+            self.title = os.path.basename(original_name)
+        super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.file.url
+        return self.title or self.file.url
 
     class Meta:
         verbose_name = "Изображение примера работы"
