@@ -2,7 +2,7 @@ import os
 import uuid
 from django.core.management.base import BaseCommand
 from django.conf import settings
-from Lending.models import ImagesQuiz, Icons, ImageForExampleOfWork
+from Lending.models import  ImageForExampleOfWork
 
 def generate_random_filename(original_filename, upload_dir):
     ext = original_filename.split('.')[-1].lower()
@@ -30,7 +30,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         self.stdout.write('Начинаем переименование файлов...')
 
-        rename_files_for_model(ImagesQuiz, 'lending/data/quizPhotos')
-        rename_files_for_model(Icons, 'lending/data/icons')
+        rename_files_for_model(ImageForExampleOfWork, 'lending/data/examplesOfWork')
 
         self.stdout.write(self.style.SUCCESS('Готово! Все файлы переименованы.'))
