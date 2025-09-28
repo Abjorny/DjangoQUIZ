@@ -5,7 +5,13 @@ import json
 
 
 def lendingForamted(lending: LendingPage, utmContent = None):
-    utmExampleWork = UtmExampleWork.objects.filter(utm_content = utmContent).first()
+    utmExampleWork = None
+    if utmContent is not None:
+        examples = UtmExampleWork.objects.all()
+        for example in examples:
+            if str(utmContent) in example.utm_content:
+                utmExampleWork = example.examplesOfWork
+                break
 
     response_data = {
         "domain" : lending.domain,
