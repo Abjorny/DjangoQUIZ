@@ -32,6 +32,22 @@ def random_icon_filename(instance, filename):
 def random_example_filename(instance, filename):
     return get_unique_filename(instance, filename, 'lending/data/examplesOfWork')
 
+class UtmExampleWork(models.Model):
+    examplesOfWork = models.JSONField(
+        verbose_name = "Примеры работ"
+    )
+    utm_content = models.JSONField(
+        verbose_name="UTM контент метка",
+        default=list
+    )
+    class Meta:
+        verbose_name = "UTM примеры работы"
+        verbose_name_plural = "UTM примеры работ"
+
+
+    def __str__(self):
+        return f"Пример работ #{self.id}"
+    
 class Settings(models.Model):
     excelTable = models.FileField(
         upload_to="lending/settings/",
@@ -100,7 +116,6 @@ class Settings(models.Model):
 
     def __str__(self):
         return "Настройки"
-
 
 class ImagesQuiz(models.Model):
     file = models.FileField(
@@ -213,7 +228,6 @@ class Icons(models.Model):
 
     def __str__(self):
         return self.title
-
 
 class ImageForExampleOfWork(models.Model):
     file = models.FileField(

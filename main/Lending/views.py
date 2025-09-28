@@ -1,12 +1,12 @@
 from django.shortcuts import render 
-from .models import LendingPage, UploadInfo, Quiz, ImagesQuiz
-import json
+from .models import LendingPage, UploadInfo, Quiz, ImagesQuiz, UtmExampleWork
 from django.http import Http404
+import json
 
 
+def lendingForamted(lending: LendingPage, utmContent = None):
+    utmExampleWork = UtmExampleWork.objects.filter(utm_content = utmContent).first()
 
-
-def lendingForamted(lending: LendingPage):
     response_data = {
         "domain" : lending.domain,
         "title" : lending.title,
@@ -15,7 +15,7 @@ def lendingForamted(lending: LendingPage):
         "logo" : lending.logo.url,
         "chatid" : lending.chatid, 
         "number" : lending.number,
-        "examples" : lending.examplesOfWork,
+        "examples" : lending.examplesOfWork if utmExampleWork is None else utmExampleWork.examplesOfWork,
         "number_whatsap" : lending.number_whatsap,
         "username_telegram" : lending.username_telegram,
         "blackout" : lending.blackout,
@@ -59,7 +59,7 @@ def index(request):
                     break
 
     questions = quiz.questionJson
-    lending_data = lendingForamted(lending=lengingPage)
+    lending_data = lendingForamted(lending=lengingPage, utmContent= utm_content)
 
     question_data = []
     endFrameData = []

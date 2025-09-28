@@ -3,7 +3,13 @@ from django.utils.html import format_html
 
 from .models import Settings,UploadInfo, Quiz, EndFrame, \
                     LendingPage, Icons, ImageForExampleOfWork, \
-                    ImagesQuiz
+                    ImagesQuiz, UtmExampleWork
+
+
+@admin.register(UtmExampleWork)
+class UtmExampleWorkAdmin(admin.ModelAdmin):
+    list_display = ('utm_content',) 
+    search_fields = ('utm_content',)  
 
 
 @admin.register(ImageForExampleOfWork)
@@ -18,7 +24,6 @@ class ImageForExampleOfWorkAdmin(admin.ModelAdmin):
             )
         return "-"
     file_link.short_description = "Скопировать ссылку"
-
 
 @admin.register(Icons)
 class QuizAdmin(admin.ModelAdmin):
