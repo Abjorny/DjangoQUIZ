@@ -11,31 +11,16 @@ $(document).ready(function () {
 function showSuccessPopup() {
 	const popupSuccess = document.getElementById("popup-success");
 	if (!popupSuccess) return;
-	// показываем
+
 	popupSuccess.classList.add("popup-success--show");
 
-	// закрытие при клике вне контента
-	const onClick = (e) => {
-		const content = popupSuccess.querySelector(".popup-success__content");
-		if (!content.contains(e.target)) hide();
-	};
-	// закрытие по Esc
-	const onKey = (e) => { if (e.key === "Escape") hide(); };
-
-	function hide() {
+	setTimeout(() => {
 		popupSuccess.classList.remove("popup-success--show");
-		document.removeEventListener("click", onClick, true);
-		document.removeEventListener("keydown", onKey);
-		clearTimeout(timeoutId);
-	}
-
-	// повесим слушатели
-	setTimeout(() => document.addEventListener("click", onClick, true), 0);
-	document.addEventListener("keydown", onKey);
-
-	// авто-скрытие
-	const timeoutId = setTimeout(hide, 2500);
+		location.reload();
+	}, 3000);
 }
+
+
 
     function checkFields(currentFrame) {
         const inputs = currentFrame.find("input, textarea, select");
@@ -99,7 +84,7 @@ function showSuccessPopup() {
             inputDataString += name + " : " + value + "\n"; 
             await sendMessage(inputDataString, chatId);
             showSuccessPopup();
-            // location.reload(); 
+            
         }
     });
 });
