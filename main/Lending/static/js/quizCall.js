@@ -12,10 +12,16 @@ function showSuccessPopup() {
 	const popupSuccess = document.getElementById("popup-success");
 	if (!popupSuccess) return;
 
+	// показываем попап
 	popupSuccess.classList.add("popup-success--show");
 
+	// блокируем скролл
+	document.body.classList.add("lock");
+
+	// авто-скрытие через 3 секунды
 	setTimeout(() => {
 		popupSuccess.classList.remove("popup-success--show");
+		document.body.classList.remove("lock"); // разблокируем скролл
 		location.reload();
 	}, 3000);
 }
