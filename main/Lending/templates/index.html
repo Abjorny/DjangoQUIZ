@@ -280,7 +280,13 @@
 	<button id="quizButton" onClick='{{ landingPage.target_quiz | safe }}' style="display: none;"></button>
 	<button id="feedbackButton" onClick='{{ landingPage.target_feedback | safe }}' style="display: none;"></button>
 	<button id="quizButtonSet" onClick='{{ landingPage.target_quiz_set | safe }}' style="display: none;"></button>
-
+<div class="popup-success" id="popup-success">
+	<div class="popup-success__wrapper">
+		<div class="popup-success__content">
+			<p>✅ Заявка успешно отправлена!</p>
+		</div>
+	</div>
+</div>
 	<script defer>
 		function stripHTML(html) {
 			const div = document.createElement("div");
@@ -298,6 +304,7 @@
 
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js?_v=20250109001415"></script>
+	
 </body>
 
 </html>
