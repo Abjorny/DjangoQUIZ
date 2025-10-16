@@ -7,13 +7,36 @@ $(document).ready(function () {
     
     let page = 1;
     let inputDataString = `${cleanTitle}\n${cleanTitleSlider}\n\n`;
-    function showSuccessPopup() {
+    // ======= success popup =======
+function showSuccessPopup() {
 	const popupSuccess = document.getElementById("popup-success");
+	if (!popupSuccess) return;
+	// показываем
 	popupSuccess.classList.add("popup-success--show");
-	setTimeout(() => {
+
+	// закрытие при клике вне контента
+	const onClick = (e) => {
+		const content = popupSuccess.querySelector(".popup-success__content");
+		if (!content.contains(e.target)) hide();
+	};
+	// закрытие по Esc
+	const onKey = (e) => { if (e.key === "Escape") hide(); };
+
+	function hide() {
 		popupSuccess.classList.remove("popup-success--show");
-	}, 2500);
+		document.removeEventListener("click", onClick, true);
+		document.removeEventListener("keydown", onKey);
+		clearTimeout(timeoutId);
+	}
+
+	// повесим слушатели
+	setTimeout(() => document.addEventListener("click", onClick, true), 0);
+	document.addEventListener("keydown", onKey);
+
+	// авто-скрытие
+	const timeoutId = setTimeout(hide, 2500);
 }
+
     function checkFields(currentFrame) {
         const inputs = currentFrame.find("input, textarea, select");
         inputs.each(function () {
