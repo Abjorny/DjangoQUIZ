@@ -7,6 +7,13 @@ $(document).ready(function () {
     
     let page = 1;
     let inputDataString = `${cleanTitle}\n${cleanTitleSlider}\n\n`;
+    function showSuccessPopup() {
+	const popupSuccess = document.getElementById("popup-success");
+	popupSuccess.classList.add("popup-success--show");
+	setTimeout(() => {
+		popupSuccess.classList.remove("popup-success--show");
+	}, 2500);
+}
     function checkFields(currentFrame) {
         const inputs = currentFrame.find("input, textarea, select");
         inputs.each(function () {
@@ -68,7 +75,8 @@ $(document).ready(function () {
             $(this).prop('disabled', true);
             inputDataString += name + " : " + value + "\n"; 
             await sendMessage(inputDataString, chatId);
-            location.reload(); 
+            showSuccessPopup();
+            // location.reload(); 
         }
     });
 });

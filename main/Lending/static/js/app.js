@@ -158,6 +158,8 @@ $(document).ready(function () {
     let hardestCurrentSliderIndex = 0;
     let hardestCurrentImageIndex = 0;
 
+
+
     function updateHardestSlider(index) {
         const sliderData = getCurrentSliderData();
         const slider = sliderData[index];
