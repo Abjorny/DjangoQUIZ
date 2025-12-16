@@ -16,11 +16,7 @@ class ApiBotView(APIView):
             lengingPage = LendingPage.objects.filter(
                 domain = str(host)
             ).first()
-            print(host)
-            print(request.META.get("HTTP_HOST"))
-            print(request.META.get("HTTP_X_FORWARDED_HOST"))
-            print(request.META)
-
+            print(lengingPage and lengingPage.is_crm)
             if lengingPage and lengingPage.is_crm:
                 value = serializer.validated_data['value']
                 name = serializer.validated_data['name']
