@@ -20,7 +20,7 @@ class ApiBotView(APIView):
                 value = serializer.validated_data['value']
                 name = serializer.validated_data['name']
                 data = {
-                        "value": value,
+                        "number": value,
                         "name": name,
                         "utm_content": utm_content
                 }
