@@ -23,7 +23,11 @@ class ApiBotView(APIView):
                     data = {
                             "phone": value,
                             "name": name,
-                            "utm_content": utm_content
+                            "utm_content": utm_content,
+                            "utm_term": "",
+                            "utm_campaign": "deliv_poisk_rf",
+                            "utm_medium": "cpc",
+                            "utm_source" : "yandex_cpc"
                     }
                     requests.post(
                         url= "https://delivery-boost.ru/toamo.php",
