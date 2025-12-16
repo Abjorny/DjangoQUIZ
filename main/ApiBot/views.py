@@ -23,7 +23,8 @@ class ApiBotView(APIView):
                         "value": value,
                         "name": name,
                         "utm_content": utm_content
-                    }
+                }
+                print(data)
                 resp = requests.post(
                     url= "https://delivery-boost.ru/toamo.php",
                     data = data
