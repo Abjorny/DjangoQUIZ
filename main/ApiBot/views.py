@@ -16,18 +16,22 @@ class ApiBotView(APIView):
             lengingPage = LendingPage.objects.filter(
                 domain = str(host)
             ).first()
-            print(lengingPage and lengingPage.is_crm)
             if lengingPage and lengingPage.is_crm:
                 value = serializer.validated_data['value']
                 name = serializer.validated_data['name']
-                requests.post(
-                    url= "https://delivery-boost.ru/toamo.php",
-                    data = {
+                data = {
                         "value": value,
                         "name": name,
                         "utm_content": utm_content
                     }
+                resp = requests.post(
+                    url= "https://delivery-boost.ru/toamo.php",
+                    data = data
                 )
+
+                print(resp.status_code)   # HTTP статус (200, 400, 500 и т.д.)
+                print(resp.text)          # Тело ответа
+
 
             chat_id = serializer.validated_data['chat_id']
             message = serializer.validated_data['message']
