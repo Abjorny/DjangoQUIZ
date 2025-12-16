@@ -2,3 +2,4 @@ venv/
 db.sqlite3
 main/media/lending/data/examplesOfWork/
 __pycache__
+media/

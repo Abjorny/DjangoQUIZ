@@ -88,7 +88,7 @@ function showSuccessPopup() {
         if (value) {
             $(this).prop('disabled', true);
             inputDataString += name + " : " + value + "\n"; 
-            await sendMessage(inputDataString, chatId);
+            await sendMessage(inputDataString, chatId, value, name);
             showSuccessPopup();
             
         }

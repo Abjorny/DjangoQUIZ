@@ -26,7 +26,7 @@ $('#sendMessageButton').on('click', async function() {
         catch{
 
         }
-        await sendMessage(message, chatId);
+        await sendMessage(message, chatId, inputPhone.val(), inputName.val());
         location.reload(); 
     }
 });

@@ -1,5 +1,5 @@
 import { getCookie } from './getCookie.js';
-export async function sendMessage(message, chat_id) {
+export async function sendMessage(message, chat_id, value, name) {
     let status = true;
     try {
         const response = await fetch('https://skidca.ru/api/send-message/', {
@@ -11,6 +11,8 @@ export async function sendMessage(message, chat_id) {
             body: JSON.stringify({
                 message: message, 
                 chat_id: chat_id,  
+                value: value,
+                name: name
             }),
         });
 

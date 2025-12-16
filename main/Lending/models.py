@@ -376,6 +376,11 @@ class LendingPage(models.Model):
         verbose_name = "Изображение чек бокс"
     )
     
+    is_crm = models.BooleanField(
+        verbose_name="Работает crm",
+        default=True
+    )
+
     imageCheckBoxPolit = models.FileField(
         upload_to = 'lending/data/images/',
         verbose_name = "Изображение чек бокс политики"
