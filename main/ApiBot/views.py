@@ -17,21 +17,21 @@ class ApiBotView(APIView):
                 domain = str(host)
             ).first()
             if lengingPage and lengingPage.is_crm:
-                value = serializer.validated_data['value']
-                name = serializer.validated_data['name']
-                data = {
-                        "number": value,
-                        "name": name,
-                        "utm_content": utm_content
-                }
-                print(data)
-                resp = requests.post(
-                    url= "https://delivery-boost.ru/toamo.php",
-                    data = data
-                )
+                try:
+                    value = serializer.validated_data['value']
+                    name = serializer.validated_data['name']
+                    data = {
+                            "number": value,
+                            "name": name,
+                            "utm_content": utm_content
+                    }
+                    requests.post(
+                        url= "https://delivery-boost.ru/toamo.php",
+                        data = data
+                    )
+                except:
+                    pass
 
-                print(resp.status_code)   # HTTP статус (200, 400, 500 и т.д.)
-                print(resp.text)          # Тело ответа
 
 
             chat_id = serializer.validated_data['chat_id']
