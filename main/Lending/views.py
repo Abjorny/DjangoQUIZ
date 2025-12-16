@@ -45,6 +45,7 @@ def index(request):
     utm_content = request.GET.get('utm_content', None)
 
     host = request.get_host()
+    print(host)
     lengingPage = LendingPage.objects.filter(
         domain = str(host)
     ).first()
