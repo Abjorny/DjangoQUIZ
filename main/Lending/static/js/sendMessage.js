@@ -2,7 +2,7 @@ import { getCookie } from './getCookie.js';
 export async function sendMessage(message, chat_id, value, name) {
     let status = true;
     try {
-        const response = await fetch('https://skidca.ru/api/send-message/', {
+        const response = await fetch('/api/send-message/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
