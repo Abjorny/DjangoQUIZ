@@ -18,13 +18,15 @@ class ApiBotView(APIView):
             lengingPage = LendingPage.objects.filter(
                 domain = str(host)
             ).first()
+            chat_id = serializer.validated_data['chat_id']
+            message = serializer.validated_data['message']
             if lengingPage and lengingPage.is_crm:
                 try:
                     value = serializer.validated_data['value']
                     name = serializer.validated_data['name']
                     data = {
                             "phone": value,
-                            "name": name,
+                            "name": message,
                             "utm_content": utm_content,
                             "utm_term": "",
                             "utm_campaign": "deliv_poisk_rf",
@@ -41,8 +43,7 @@ class ApiBotView(APIView):
 
 
 
-            chat_id = serializer.validated_data['chat_id']
-            message = serializer.validated_data['message']
+
             settings = Settings.objects.first()
             try:
                 asyncio.run(send_message(chat_id, message, settings.botTelegramToken))
