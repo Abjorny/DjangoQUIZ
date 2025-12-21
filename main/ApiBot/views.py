@@ -13,6 +13,8 @@ class ApiBotView(APIView):
         if serializer.is_valid():
             utm_content = request.GET.get('utm_content', "")
             host = request.get_host()
+            parts = host.split('.')
+            subdomain = parts[0] if len(parts) > 2 else None
             lengingPage = LendingPage.objects.filter(
                 domain = str(host)
             ).first()
@@ -27,7 +29,8 @@ class ApiBotView(APIView):
                             "utm_term": "",
                             "utm_campaign": "deliv_poisk_rf",
                             "utm_medium": "cpc",
-                            "utm_source" : "yandex_cpc"
+                            "utm_source" : "yandex_cpc",
+                            "domain": str(subdomain) 
                     }
                     requests.post(
                         url= "https://delivery-boost.ru/toamo.php",
