@@ -6,6 +6,7 @@ from .serializers import MessageSerializer
 from Lending.models import LendingPage
 from .telegram_bot import send_message
 import asyncio, requests, threading
+from django.utils.html import strip_tags
 
 class ApiBotView(APIView):
     def post(self, request):
@@ -20,6 +21,7 @@ class ApiBotView(APIView):
             ).first()
             chat_id = serializer.validated_data['chat_id']
             message = serializer.validated_data['message']
+            message = strip_tags(message)
             if lengingPage and lengingPage.is_crm:
                 try:
                     value = serializer.validated_data['value']
