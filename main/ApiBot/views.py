@@ -13,6 +13,7 @@ class ApiBotView(APIView):
         serializer = MessageSerializer(data=request.data)
 
         if not serializer.is_valid():
+            print("uncurrct", request.data)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
         data = serializer.validated_data
