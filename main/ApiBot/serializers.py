@@ -1,11 +1,36 @@
 from rest_framework import serializers
 
 class UTMSerializer(serializers.Serializer):
-    utm_source = serializers.CharField(required=False, allow_blank=True, allow_null=True)
-    utm_medium = serializers.CharField(required=False, allow_blank=True, allow_null=True)
-    utm_campaign = serializers.CharField(required=False, allow_blank=True, allow_null=True)
-    utm_term = serializers.CharField(required=False, allow_blank=True, allow_null=True)
-    utm_content = serializers.CharField(required=False, allow_blank=True, allow_null=True)
+    utm_source = serializers.CharField(
+        required=False, 
+        allow_blank=True, 
+        allow_null=True, 
+        default=None
+    )
+    utm_medium = serializers.CharField(
+        required=False, 
+        allow_blank=True, 
+        allow_null=True, 
+        default=None
+    )
+    utm_campaign = serializers.CharField(
+        required=False, 
+        allow_blank=True, 
+        allow_null=True, 
+        default=None
+    )
+    utm_term = serializers.CharField(
+        required=False, 
+        allow_blank=True, 
+        allow_null=True, 
+        default=None
+    )
+    utm_content = serializers.CharField(
+        required=False, 
+        allow_blank=True, 
+        allow_null=True, 
+        default=None
+    )
 
 class MessageSerializer(serializers.Serializer):
     chat_id = serializers.IntegerField()
