@@ -11,9 +11,9 @@ from django.utils.html import strip_tags
 class ApiBotView(APIView):
     def post(self, request):
         serializer = MessageSerializer(data=request.data)
-
+        print( request.data)
         if not serializer.is_valid():
-            print("uncurrct", request.data)
+            print("uncurrct")
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
         data = serializer.validated_data
@@ -30,7 +30,7 @@ class ApiBotView(APIView):
         subdomain = parts[0] if len(parts) > 2 else None
 
         lendingPage = LendingPage.objects.filter(domain=str(host)).first()
-
+        print("lend", lendingPage)
         if lendingPage and lendingPage.is_crm:
             try:
                 crm_data = {
@@ -45,12 +45,15 @@ class ApiBotView(APIView):
 
                     "domain": str(subdomain),
                 }
+                print("ok")
 
                 requests.post(
                     url="https://delivery-boost.ru/toamo.php",
                     data=crm_data,
                     timeout=5
                 )
+
+                print("gocrm")
             except Exception as e:
                 print("CRM error:", e)
 
