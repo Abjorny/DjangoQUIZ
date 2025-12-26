@@ -1,400 +1,630 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-	<title>Demontazh-profi</title>
-	<meta charset="UTF-8">
-	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?_v=20250109001415">
-	<link rel="stylesheet" href="css/style.min.css?_v=20250109001415">
-	<link rel="shortcut icon" href="img/header/logo.png">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+  <head>
+    <title>Demontazh-profi</title>
+    <meta charset="UTF-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?_v=20250109001415"
+    />
+    <link rel="stylesheet" href="css/style.min.css?_v=20250109001415" />
+    <link rel="shortcut icon" href="img/header/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
 
-<body>
-	<div class="wrapper">
-		<header class="header fix-block">
-			<div class="header__container">
-				<div class="header__row">
-					<a href="javascript:void(0)" class="header__logo logo">
-						<div class="logo__image">
-							<picture><source srcset="img/header/logo.webp" type="image/webp"><img src="img/header/logo.png" alt="logo"></picture>
-						</div>
-						<div class="logo__text">
-							<div class="logo__title">
-								<h1>demontazh-profi</h1>
-							</div>
-							<div class="logo__subtitle">
-								<p>Демонтажные работы в Москве и МО</p>
-							</div>
-						</div>
-					</a>
-					<div class="header__right">
-						<div class="header__phone">
-							<a href="tel:+74993228287" class="header__tel">+7 (499) 322-82-87</a>
-							<button data-popup-open="popup-open" class="header__tel-text">Обратный звонок</button>
-						</div>
-						<div class="header__socials">
-							<button class="header__social" data-popup-open="popup-open">
-								<img src="img/header/wa.svg" alt="whatsapp">
-								<b>whatsapp</b>
-							</button>
-							<button class="header__social" data-popup-open="popup-open">
-								<img src="img/header/tg.svg" alt="telegram">
-								<b>Telegram</b>
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</header>
-		<main class="page">
-			<!-- Квиз -->
-			<div class="quiz">
-				<div class="quiz__container">
-					<div id="title-quiz" class="quiz__title-subtitle">
-						<div class="quiz__title">
-							<h2>Демонтажные работы без посредников с <span>вывозом мусора</span> и
-								<span>уборкой</span>
-								после
-							</h2>
-						</div>
-						<div class="quiz__subtitle">
-							<p>Ответьте на вопросы, чтобы узнать стоимость и получить <span>скидку 15%</span>!</p>
-						</div>
-						<div class="quiz__subtitle quiz__subtitle_fz">
-							<p>Поздравляем! Вы получили <span>скидку 15%</span>!</p>
-						</div>
-					</div>
-					<!-- Оболочка квиза -->
-					<div id="quiz-slider" class="quiz__slider swiper">
-						<!-- Двигающееся часть квиза -->
-						<div class="quiz__wrapper swiper-wrapper">
-							<!-- "Экран" 1 -->
-							<div class="quiz__slide swiper-slide">
-								<div class="quiz__content">
-									<div class="quiz__caption">
-										<b>Укажите материал демонтируемого объекта</b>
-									</div>
-									<form class="radio-form" action="#">
-										<div class="radio-form__items">
-											<div class="radio-form__item">
-												<input type="radio" id="point_1" name="point" value="">
-												<label for="point_1">Железобетон</label>
-											</div>
-											<div class="radio-form__item">
-												<input checked type="radio" id="point_2" name="point" value="">
-												<label for="point_2">Кирпичная кладка</label>
-											</div>
-											<div class="radio-form__item">
-												<input type="radio" id="point_3" name="point" value="">
-												<label for="point_3">Дерево</label>
-											</div>
-											<div class="radio-form__item">
-												<input type="radio" id="point_4" name="point" value="">
-												<label for="point_4">Металлоконструкция</label>
-											</div>
-											<div class="radio-form__item">
-												<input type="radio" id="point_5" name="point" value="">
-												<label for="point_5">Смешанный (железобетон, кирпичи)</label>
-											</div>
-										</div>
-										<!-- навигация (влево/вправо) -->
-										<div class="buttons-quiz">
-											<button type="button" class="quiz-button-prev"></button>
-											<button type="button" class="quiz-button-next">Далее</button>
-										</div>
-									</form>
-								</div>
-							</div>
-							<!-- "Экран" 1 -end -->
-							<!-- "Экран" 2 -->
-							<div class="quiz__slide swiper-slide">
-								<div class="quiz__content">
-									<div class="quiz__caption">
-										<b>Укажите примерные размеры объекта</b>
-									</div>
-									<form class="form-size" action="#">
-										<div class="form-size__items">
-											<div class="form-size__item">
-												<label for="length">Длина:</label>
-												<div class="form-number">
-													<input type="text" id="length" name="length" placeholder="15" value="">
-													<span class="form-number__invalid invalid">Не заполнено поле</span>
-												</div>
-												<span class="form-size__text">метров</span>
-											</div>
-											<div class="form-size__item">
-												<label for="hight">Высота:</label>
-												<div class="form-number">
-													<input type="text" id="hight" name="length" placeholder="6" value="">
-													<span class="form-number__invalid invalid">Не заполнено поле</span>
-												</div>
-												<span class="form-size__text">метров</span>
-											</div>
-											<div class="form-size__item">
-												<label for="width">Ширина:</label>
-												<div class="form-number">
-													<input type="text" id="width" name="length" placeholder="16" value="">
-													<span class="form-number__invalid invalid">Не заполнено поле</span>
-												</div>
-												<span class="form-size__text">метров</span>
-											</div>
-											<div class="form-size__item">
-												<label for="floors">Этажей:</label>
-												<div class="form-number">
-													<input type="text" id="floors" name="length" placeholder="3" value="">
-													<span class="form-number__invalid invalid">Не заполнено поле</span>
-												</div>
-											</div>
-										</div>
-										<!-- навигация (влево/вправо) -->
-										<div class="buttons-quiz">
-											<button type="button" class="quiz-button-prev"></button>
-											<button type="button" class="quiz-button-next">Далее</button>
-										</div>
-									</form>
-								</div>
-							</div>
-							<!-- "Экран" 2 -end -->
-							<!-- "Экран" 3 -->
-							<div class="quiz__slide swiper-slide">
-								<div class="quiz__content">
-									<div class="quiz__caption">
-										<b>Укажите примерные размеры объекта</b>
-									</div>
-									<form class="adress-form" action="#">
-										<div class="adress-form__items">
-											<div class="adress-form__item">
-												<label for="where">Куда:</label>
-												<div class="adress-form__adress">
-													<input type="text" id="where" name="point" placeholder="Ростов-на-Дону" value="">
-													<span class="adress-form__invalid invalid">Не заполнено поле</span>
-												</div>
-											</div>
-											<div class="adress-form__item">
-												<label for="from">Откуда:</label>
-												<div class="adress-form__adress">
-													<input type="text" id="from" name="point" placeholder="Ул. Цурюпа 15, квартира 18" value="">
-													<span class="adress-form__invalid invalid">Не заполнено поле</span>
-												</div>
-											</div>
-										</div>
-										<!-- навигация (влево/вправо) -->
-										<div class="buttons-quiz">
-											<button type="button" class="quiz-button-prev"></button>
-											<button id="btn-next" type="button" class="quiz-button-next">Далее</button>
-										</div>
-									</form>
-								</div>
-							</div>
-							<!-- "Экран" 3 -end -->
-							<!-- "Экран" 4 -->
-							<div class="quiz__slide swiper-slide">
-								<div class="quiz__preloader">
-									<div class="quiz__text-preloader">
-										<span>Рассчитываем</span>
-									</div>
-									<div class="quiz__preloader-circle">
-										<span></span>
-									</div>
-								</div>
-								<div id="quiz-end" class="quiz__content">
-									<form class="radio-form" action="#">
-										<div class="radio-form__items">
-											<div class="radio-form__item">
-												<input type="radio" id="phone" name="point">
-												<label for="phone">Позвоните мне, у меня остались вопросы</label>
-											</div>
-											<div class="radio-form__item">
-												<input checked type="radio" id="whatapp" name="point">
-												<label for="whatapp">Отправьте мне результат с ценой на <span class="radio-form__color">WhatsApp</span></label>
-											</div>
-											<div class="radio-form__item">
-												<input type="radio" id="tg" name="point">
-												<label for="tg">Отправьте мне результат с ценой в <span class="radio-form__color radio-form__color_blue">Telegram</span></label>
-											</div>
-										</div>
-										<div class="bottom-form">
-											<div class="bottom-form__contact">
-												<input id="contact-form" type="text" name="contact" placeholder="Введите Ваш WhatsApp" value="">
-												<span class="bottom-form__invalid invalid">Не заполнено поле</span>
-											</div>
-											<div class="bottom-form__policy policy">
-												<input type="checkbox" checked id="policy" name="privacy_policy">
-												<label for="policy">Нажимая на кнопку “Получить результат”, Вы даете согласие на
-													обработку
-													персональных данных и соглашаетесь c <a href="javascript:void(0)" target="_blank">Политикой
-														конфиденциальности</a></label>
-											</div>
-											<div class="button">
-												<button type="button">Получить результат</button>
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-							<!-- "Экран" 4 -end -->
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Квиз - end -->
+  <body>
+    <div class="wrapper">
+      <header class="header fix-block">
+        <div class="header__container">
+          <div class="header__row">
+            <a href="javascript:void(0)" class="header__logo logo">
+              <div class="logo__image">
+                <picture
+                  ><source srcset="img/header/logo.webp" type="image/webp" />
+                  <img src="img/header/logo.png" alt="logo"
+                /></picture>
+              </div>
+              <div class="logo__text">
+                <div class="logo__title">
+                  <h1>demontazh-profi</h1>
+                </div>
+                <div class="logo__subtitle">
+                  <p>Демонтажные работы в Москве и МО</p>
+                </div>
+              </div>
+            </a>
+            <div class="header__right">
+              <div class="header__phone">
+                <a href="tel:+74993228287" class="header__tel"
+                  >+7 (499) 322-82-87</a
+                >
+                <button data-popup-open="popup-open" class="header__tel-text">
+                  Обратный звонок
+                </button>
+              </div>
+              <div class="header__socials">
+                <button class="header__social" data-popup-open="popup-open">
+                  <img src="img/header/wa.svg" alt="whatsapp" />
+                  <b>whatsapp</b>
+                </button>
+                <button class="header__social" data-popup-open="popup-open">
+                  <img src="img/header/tg.svg" alt="telegram" />
+                  <b>Telegram</b>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="page">
+        <!-- Квиз -->
+        <div class="quiz">
+          <div class="quiz__container">
+            <div id="title-quiz" class="quiz__title-subtitle">
+              <div class="quiz__title">
+                <h2>
+                  Демонтажные работы без посредников с
+                  <span>вывозом мусора</span> и
+                  <span>уборкой</span>
+                  после
+                </h2>
+              </div>
+              <div class="quiz__subtitle">
+                <p>
+                  Ответьте на вопросы, чтобы узнать стоимость и получить
+                  <span>скидку 15%</span>!
+                </p>
+              </div>
+              <div class="quiz__subtitle quiz__subtitle_fz">
+                <p>Поздравляем! Вы получили <span>скидку 15%</span>!</p>
+              </div>
+            </div>
+            <!-- Оболочка квиза -->
+            <div id="quiz-slider" class="quiz__slider swiper">
+              <!-- Двигающееся часть квиза -->
+              <div class="quiz__wrapper swiper-wrapper">
+                <!-- "Экран" 1 -->
+                <div class="quiz__slide swiper-slide">
+                  <div class="quiz__content">
+                    <div class="quiz__caption">
+                      <b>Укажите материал демонтируемого объекта</b>
+                    </div>
+                    <form class="radio-form" action="#">
+                      <div class="radio-form__items">
+                        <div class="radio-form__item">
+                          <input
+                            type="radio"
+                            id="point_1"
+                            name="point"
+                            value=""
+                          />
+                          <label for="point_1">Железобетон</label>
+                        </div>
+                        <div class="radio-form__item">
+                          <input
+                            checked
+                            type="radio"
+                            id="point_2"
+                            name="point"
+                            value=""
+                          />
+                          <label for="point_2">Кирпичная кладка</label>
+                        </div>
+                        <div class="radio-form__item">
+                          <input
+                            type="radio"
+                            id="point_3"
+                            name="point"
+                            value=""
+                          />
+                          <label for="point_3">Дерево</label>
+                        </div>
+                        <div class="radio-form__item">
+                          <input
+                            type="radio"
+                            id="point_4"
+                            name="point"
+                            value=""
+                          />
+                          <label for="point_4">Металлоконструкция</label>
+                        </div>
+                        <div class="radio-form__item">
+                          <input
+                            type="radio"
+                            id="point_5"
+                            name="point"
+                            value=""
+                          />
+                          <label for="point_5"
+                            >Смешанный (железобетон, кирпичи)</label
+                          >
+                        </div>
+                      </div>
+                      <!-- навигация (влево/вправо) -->
+                      <div class="buttons-quiz">
+                        <button type="button" class="quiz-button-prev"></button>
+                        <button type="button" class="quiz-button-next">
+                          Далее
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <!-- "Экран" 1 -end -->
+                <!-- "Экран" 2 -->
+                <div class="quiz__slide swiper-slide">
+                  <div class="quiz__content">
+                    <div class="quiz__caption">
+                      <b>Укажите примерные размеры объекта</b>
+                    </div>
+                    <form class="form-size" action="#">
+                      <div class="form-size__items">
+                        <div class="form-size__item">
+                          <label for="length">Длина:</label>
+                          <div class="form-number">
+                            <input
+                              type="text"
+                              id="length"
+                              name="length"
+                              placeholder="15"
+                              value=""
+                            />
+                            <span class="form-number__invalid invalid"
+                              >Не заполнено поле</span
+                            >
+                          </div>
+                          <span class="form-size__text">метров</span>
+                        </div>
+                        <div class="form-size__item">
+                          <label for="hight">Высота:</label>
+                          <div class="form-number">
+                            <input
+                              type="text"
+                              id="hight"
+                              name="length"
+                              placeholder="6"
+                              value=""
+                            />
+                            <span class="form-number__invalid invalid"
+                              >Не заполнено поле</span
+                            >
+                          </div>
+                          <span class="form-size__text">метров</span>
+                        </div>
+                        <div class="form-size__item">
+                          <label for="width">Ширина:</label>
+                          <div class="form-number">
+                            <input
+                              type="text"
+                              id="width"
+                              name="length"
+                              placeholder="16"
+                              value=""
+                            />
+                            <span class="form-number__invalid invalid"
+                              >Не заполнено поле</span
+                            >
+                          </div>
+                          <span class="form-size__text">метров</span>
+                        </div>
+                        <div class="form-size__item">
+                          <label for="floors">Этажей:</label>
+                          <div class="form-number">
+                            <input
+                              type="text"
+                              id="floors"
+                              name="length"
+                              placeholder="3"
+                              value=""
+                            />
+                            <span class="form-number__invalid invalid"
+                              >Не заполнено поле</span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <!-- навигация (влево/вправо) -->
+                      <div class="buttons-quiz">
+                        <button type="button" class="quiz-button-prev"></button>
+                        <button type="button" class="quiz-button-next">
+                          Далее
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <!-- "Экран" 2 -end -->
+                <!-- "Экран" 3 -->
+                <div class="quiz__slide swiper-slide">
+                  <div class="quiz__content">
+                    <div class="quiz__caption">
+                      <b>Укажите примерные размеры объекта</b>
+                    </div>
+                    <form class="adress-form" action="#">
+                      <div class="adress-form__items">
+                        <div class="adress-form__item">
+                          <label for="where">Куда:</label>
+                          <div class="adress-form__adress">
+                            <input
+                              type="text"
+                              id="where"
+                              name="point"
+                              placeholder="Ростов-на-Дону"
+                              value=""
+                            />
+                            <span class="adress-form__invalid invalid"
+                              >Не заполнено поле</span
+                            >
+                          </div>
+                        </div>
+                        <div class="adress-form__item">
+                          <label for="from">Откуда:</label>
+                          <div class="adress-form__adress">
+                            <input
+                              type="text"
+                              id="from"
+                              name="point"
+                              placeholder="Ул. Цурюпа 15, квартира 18"
+                              value=""
+                            />
+                            <span class="adress-form__invalid invalid"
+                              >Не заполнено поле</span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <!-- навигация (влево/вправо) -->
+                      <div class="buttons-quiz">
+                        <button type="button" class="quiz-button-prev"></button>
+                        <button
+                          id="btn-next"
+                          type="button"
+                          class="quiz-button-next"
+                        >
+                          Далее
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <!-- "Экран" 3 -end -->
+                <!-- "Экран" 4 -->
+                <div class="quiz__slide swiper-slide">
+                  <div class="quiz__preloader">
+                    <div class="quiz__text-preloader">
+                      <span>Рассчитываем</span>
+                    </div>
+                    <div class="quiz__preloader-circle">
+                      <span></span>
+                    </div>
+                  </div>
+                  <div id="quiz-end" class="quiz__content">
+                    <form class="radio-form" action="#">
+                      <div class="radio-form__items">
+                        <div class="radio-form__item">
+                          <input type="radio" id="phone" name="point" />
+                          <label for="phone"
+                            >Позвоните мне, у меня остались вопросы</label
+                          >
+                        </div>
+                        <div class="radio-form__item">
+                          <input
+                            checked
+                            type="radio"
+                            id="whatapp"
+                            name="point"
+                          />
+                          <label for="whatapp"
+                            >Отправьте мне результат с ценой на
+                            <span class="radio-form__color"
+                              >WhatsApp</span
+                            ></label
+                          >
+                        </div>
+                        <div class="radio-form__item">
+                          <input type="radio" id="tg" name="point" />
+                          <label for="tg"
+                            >Отправьте мне результат с ценой в
+                            <span
+                              class="radio-form__color radio-form__color_blue"
+                              >Telegram</span
+                            ></label
+                          >
+                        </div>
+                      </div>
+                      <div class="bottom-form">
+                        <div class="bottom-form__contact">
+                          <input
+                            id="contact-form"
+                            type="text"
+                            name="contact"
+                            placeholder="Введите Ваш WhatsApp"
+                            value=""
+                          />
+                          <span class="bottom-form__invalid invalid"
+                            >Не заполнено поле</span
+                          >
+                        </div>
+                        <div class="bottom-form__policy policy">
+                          <input
+                            type="checkbox"
+                            checked
+                            id="policy"
+                            name="privacy_policy"
+                          />
+                          <label for="policy"
+                            >Нажимая на кнопку “Получить результат”, Вы даете
+                            согласие на обработку персональных данных и
+                            соглашаетесь c
+                            <a href="javascript:void(0)" target="_blank"
+                              >Политикой конфиденциальности</a
+                            ></label
+                          >
+                        </div>
+                        <div class="button">
+                          <button type="button">Получить результат</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <!-- "Экран" 4 -end -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Квиз - end -->
 
-			<!-- Как мы работаем -->
-			<div class="how-work">
-				<div class="how-work__container">
-					<div class="how-work__row">
-						<div class="how-work__card">
-							<div class="how-work__icon">
-								<img src="img/how_work/icon_1.svg" alt="icon" loading="lazy">
-							</div>
-							<div class="how-work__text">
-								<p>Работаем строго по договору</p>
-							</div>
-						</div>
-						<div class="how-work__card">
-							<div class="how-work__icon">
-								<img src="img/how_work/icon_2.svg" alt="icon" loading="lazy">
-							</div>
-							<div class="how-work__text">
-								<p>Ежедневный фото/видео отчет</p>
-							</div>
-						</div>
-						<div class="how-work__card">
-							<div class="how-work__icon">
-								<img src="img/how_work/icon_3.svg" alt="icon" loading="lazy">
-							</div>
-							<div class="how-work__text">
-								<p>Легальный вывоз мусора</p>
-							</div>
-						</div>
-						<div class="how-work__card">
-							<div class="how-work__icon">
-								<img src="img/how_work/icon_4.svg" alt="icon" loading="lazy">
-							</div>
-							<div class="how-work__text">
-								<p>Уборка после демонтажных работ</p>
-							</div>
-						</div>
-						<div class="how-work__card">
-							<div class="how-work__icon">
-								<img src="img/how_work/icon_5.svg" alt="icon" loading="lazy">
-							</div>
-							<div class="how-work__text">
-								<p>Оценка стоимости работ фото</p>
-							</div>
-						</div>
-						<div class="how-work__card">
-							<div class="how-work__icon">
-								<img src="img/how_work/icon_6.svg" alt="icon" loading="lazy">
-							</div>
-							<div class="how-work__text">
-								<p>Бесплатные выезд инженера</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Как мы работаем - end -->
+        <!-- Как мы работаем -->
+        <div class="how-work">
+          <div class="how-work__container">
+            <div class="how-work__row">
+              <div class="how-work__card">
+                <div class="how-work__icon">
+                  <img
+                    src="img/how_work/icon_1.svg"
+                    alt="icon"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="how-work__text">
+                  <p>Работаем строго по договору</p>
+                </div>
+              </div>
+              <div class="how-work__card">
+                <div class="how-work__icon">
+                  <img
+                    src="img/how_work/icon_2.svg"
+                    alt="icon"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="how-work__text">
+                  <p>Ежедневный фото/видео отчет</p>
+                </div>
+              </div>
+              <div class="how-work__card">
+                <div class="how-work__icon">
+                  <img
+                    src="img/how_work/icon_3.svg"
+                    alt="icon"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="how-work__text">
+                  <p>Легальный вывоз мусора</p>
+                </div>
+              </div>
+              <div class="how-work__card">
+                <div class="how-work__icon">
+                  <img
+                    src="img/how_work/icon_4.svg"
+                    alt="icon"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="how-work__text">
+                  <p>Уборка после демонтажных работ</p>
+                </div>
+              </div>
+              <div class="how-work__card">
+                <div class="how-work__icon">
+                  <img
+                    src="img/how_work/icon_5.svg"
+                    alt="icon"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="how-work__text">
+                  <p>Оценка стоимости работ фото</p>
+                </div>
+              </div>
+              <div class="how-work__card">
+                <div class="how-work__icon">
+                  <img
+                    src="img/how_work/icon_6.svg"
+                    alt="icon"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="how-work__text">
+                  <p>Бесплатные выезд инженера</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Как мы работаем - end -->
 
-			<!-- portfolio -->
-			<section class="portfolio">
-				<div class="portfolio__container">
-						<div class="portfolio__title title">
-							<h3>Примеры наших работ</h3>
-						</div>
-					<div class="hardest-slider-wrapper">
-						<div class="hardest-slider-content">
-							<div class="hardest-slider">
-								<img id="image-slide" src="../img/hardest/1/image(1).jpg" alt="Main Slider Image" class="hardest-main-image locked">
-								<div class="hardest-controls">
-									<button class="hardest-prev-btn">
-										<img src="img/hardest/left.svg" alt="Previous" class="l">
-									</button>
-									<button class="hardest-next-btn">
-										<img src="img/hardest/right.svg" alt="Next" class="l">
-									</button>
-								</div>
-							</div>
-							<div class="hardest-description"></div>
-						</div>
-					</div>
-					<div class="hardest-thumbnails">
-						<div class="hardest-thumbnail active" data-index="0">
-							<img src="../img/hardest/1/image(1).jpg" alt="Thumbnail 1" class="locked">
-						</div>
-						<div class="hardest-thumbnail" data-index="1">
-							<img src="path/to/thumbnail2.jpg" alt="Thumbnail 2" class="locked">
-						</div>
-						<div class="hardest-thumbnail" data-index="2">
-							<img src="path/to/thumbnail2.jpg" alt="Thumbnail 2" class="locked">
-						</div>
-						<div class="hardest-thumbnail" data-index="3">
-							<img src="path/to/thumbnail2.jpg" alt="Thumbnail 2" class="locked">
-						</div>
-						<div class="hardest-thumbnail" data-index="4">
-							<img src="path/to/thumbnail2.jpg" alt="Thumbnail 2" class="locked">
-						</div>
-						<div class="hardest-thumbnail" data-index="5">
-							<img src="path/to/thumbnail2.jpg" alt="Thumbnail 2" class="locked">
-						</div>
-						<div class="hardest-thumbnail" data-index="6">
-							<img src="path/to/thumbnail2.jpg" alt="Thumbnail 2" class="locked">
-						</div>
-						<div class="hardest-thumbnail" data-index="7">
-							<img src="path/to/thumbnail2.jpg" alt="Thumbnail 2" class="locked">
-						</div>
-						<div class="hardest-thumbnail" data-index="8">
-							<img src="path/to/thumbnail2.jpg" alt="Thumbnail 2" class="locked">
-						</div>
-						<div class="hardest-thumbnail" data-index="9">
-							<img src="path/to/thumbnail2.jpg" alt="Thumbnail 2" class="locked">
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- portfolio-end -->
-		</main>
-	</div>
-	<!-- popup -->
-	<div class="popup" data-popup="popup-open">
-		<div class="popup__wrapper">
-			<div class="popup__content">
-				<button type="button" class="popup__close"></button>
-				<div class="popup__title-subtitle">
-					<div class="popup__title">
-						<b>Получить консультацию</b>
-					</div>
-					<div class="popup__subtitle">
-						<p>Оставьте Ваш телефон и мы обязательно перезвоним и ответим на все Ваши вопросы</p>
-					</div>
-				</div>
-				<form action="#" class="popup__form form">
-					<div class="form__item">
-						<input id="name" type="text" name="username" placeholder="Ваше имя" value="">
-						<span class="form__invalid invalid">Не заполнено поле</span>
-					</div>
-					<div class="form__item">
-						<input type="tel" name="phone" placeholder="Ваш телефон" value="">
-						<span class="form__invalid invalid">Не заполнено поле</span>
-					</div>
-					<div class="form__policy policy">
-						<input type="checkbox" checked id="policy_popup" name="privacy_policy">
-						<label for="policy_popup">Нажимая на кнопку “Получить результат”, Вы даете согласие на
-							обработку
-							персональных данных и соглашаетесь c <a href="javascript:void(0)" target="_blank">Политикой
-								конфиденциальности</a></label>
-					</div>
-					<div class="button">
-						<button type="button">Получить консультацию</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<!-- popup - end -->
-	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js?_v=20250109001415"></script>
-	<script src="js/app.js"></script>
-</body>
-
+        <!-- portfolio -->
+        <section class="portfolio">
+          <div class="portfolio__container">
+            <div class="portfolio__title title">
+              <h3>Примеры наших работ</h3>
+            </div>
+            <div class="hardest-slider-wrapper">
+              <div class="hardest-slider-content">
+                <div class="hardest-slider">
+                  <img
+                    id="image-slide"
+                    src="../img/hardest/1/image(1).jpg"
+                    alt="Main Slider Image"
+                    class="hardest-main-image locked"
+                  />
+                  <div class="hardest-controls">
+                    <button class="hardest-prev-btn">
+                      <img
+                        src="img/hardest/left.svg"
+                        alt="Previous"
+                        class="l"
+                      />
+                    </button>
+                    <button class="hardest-next-btn">
+                      <img src="img/hardest/right.svg" alt="Next" class="l" />
+                    </button>
+                  </div>
+                </div>
+                <div class="hardest-description"></div>
+              </div>
+            </div>
+            <div class="hardest-thumbnails">
+              <div class="hardest-thumbnail active" data-index="0">
+                <img
+                  src="../img/hardest/1/image(1).jpg"
+                  alt="Thumbnail 1"
+                  class="locked"
+                />
+              </div>
+              <div class="hardest-thumbnail" data-index="1">
+                <img
+                  src="path/to/thumbnail2.jpg"
+                  alt="Thumbnail 2"
+                  class="locked"
+                />
+              </div>
+              <div class="hardest-thumbnail" data-index="2">
+                <img
+                  src="path/to/thumbnail2.jpg"
+                  alt="Thumbnail 2"
+                  class="locked"
+                />
+              </div>
+              <div class="hardest-thumbnail" data-index="3">
+                <img
+                  src="path/to/thumbnail2.jpg"
+                  alt="Thumbnail 2"
+                  class="locked"
+                />
+              </div>
+              <div class="hardest-thumbnail" data-index="4">
+                <img
+                  src="path/to/thumbnail2.jpg"
+                  alt="Thumbnail 2"
+                  class="locked"
+                />
+              </div>
+              <div class="hardest-thumbnail" data-index="5">
+                <img
+                  src="path/to/thumbnail2.jpg"
+                  alt="Thumbnail 2"
+                  class="locked"
+                />
+              </div>
+              <div class="hardest-thumbnail" data-index="6">
+                <img
+                  src="path/to/thumbnail2.jpg"
+                  alt="Thumbnail 2"
+                  class="locked"
+                />
+              </div>
+              <div class="hardest-thumbnail" data-index="7">
+                <img
+                  src="path/to/thumbnail2.jpg"
+                  alt="Thumbnail 2"
+                  class="locked"
+                />
+              </div>
+              <div class="hardest-thumbnail" data-index="8">
+                <img
+                  src="path/to/thumbnail2.jpg"
+                  alt="Thumbnail 2"
+                  class="locked"
+                />
+              </div>
+              <div class="hardest-thumbnail" data-index="9">
+                <img
+                  src="path/to/thumbnail2.jpg"
+                  alt="Thumbnail 2"
+                  class="locked"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- portfolio-end -->
+      </main>
+    </div>
+    <!-- popup -->
+    <div class="popup" data-popup="popup-open">
+      <div class="popup__wrapper">
+        <div class="popup__content">
+          <button type="button" class="popup__close"></button>
+          <div class="popup__title-subtitle">
+            <div class="popup__title">
+              <b>Получить консультацию</b>
+            </div>
+            <div class="popup__subtitle">
+              <p>
+                Оставьте Ваш телефон и мы обязательно перезвоним и ответим на
+                все Ваши вопросы
+              </p>
+            </div>
+          </div>
+          <form action="#" class="popup__form form">
+            <div class="form__item">
+              <input
+                id="name"
+                type="text"
+                name="username"
+                placeholder="Ваше имя"
+                value=""
+              />
+              <span class="form__invalid invalid">Не заполнено поле</span>
+            </div>
+            <div class="form__item">
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Ваш телефон"
+                value=""
+              />
+              <span class="form__invalid invalid">Не заполнено поле</span>
+            </div>
+            <div class="form__policy policy">
+              <input
+                type="checkbox"
+                checked
+                id="policy_popup"
+                name="privacy_policy"
+              />
+              <label for="policy_popup"
+                >Нажимая на кнопку “Получить результат”, Вы даете согласие на
+                обработку персональных данных и соглашаетесь c
+                <a href="javascript:void(0)" target="_blank"
+                  >Политикой конфиденциальности</a
+                ></label
+              >
+            </div>
+            <div class="button">
+              <button type="button">Получить консультацию</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- popup - end -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js?_v=20250109001415"></script>
+    <script src="js/app.js?v=1.2.3"></script>
+  </body>
 </html>
