@@ -60,6 +60,7 @@ class ApiBotView(APIView):
         settings = Settings.objects.first()
 
         try:
+            print("sendtg")
             asyncio.run(
                 send_message(chat_id, message, settings.botTelegramToken)
             )
