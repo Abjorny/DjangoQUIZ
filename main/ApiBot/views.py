@@ -42,7 +42,6 @@ class ApiBotView(APIView):
 
                     "domain": str(subdomain),
                 }
-                print(crm_data)
 
                 requests.post(
                     url="https://delivery-boost.ru/toamo.php",
