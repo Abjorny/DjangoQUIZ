@@ -15,7 +15,7 @@ export async function sendMessage(message, chat_id, value, name, quiz) {
 
 
     try {
-        const response = await fetch('/api/send-message', {
+        const response = await fetch('/api/send-message/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
