@@ -44,7 +44,7 @@ class ApiBotView(APIView):
                 }
 
                 requests.post(
-                    url="https://delivery-boost.ru/toamo.php",
+                    url="https://delivery-boost.ru/toamo2.php",
                     data=crm_data,
                     timeout=5
                 )
