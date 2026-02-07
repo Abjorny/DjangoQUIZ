@@ -47,26 +47,47 @@ function showSuccessPopup() {
         page -= 1;
     });
 
-    $(".quiz-button-next").on("click", function (e) {
-        const currentButton = $(this);
-        const currentFrame = currentButton.closest(".quiz__slide");
-        if (currentFrame.length) {
-            const inputs = currentFrame.find("input, textarea, select");
-        
-            inputs.each(function () {
-                const name = $(this).attr("name");
-                const type = $(this).attr("type");
-                let value = $(this).val();
-        
-                if (type === "radio") {
-                    if ($(this).is(":checked")) {
-                        inputData[name] = value;
-                    }
-                } else {
-                    if (name) inputData[name] = value;
-                }
-            });
+$(".quiz-button-next").on("click", function (e) {
+    const currentButton = $(this);
+    const currentFrame = currentButton.closest(".quiz__slide");
+    let isValid = true;
+    const inputs = currentFrame.find("input[required]");
+    
+    inputs.each(function () {
+        if (!$(this).val().trim()) {
+            isValid = false;
+            $(this).siblings(".invalid").addClass("active-error");
+        } else {
+            $(this).siblings(".invalid").removeClass("active-error");
         }
+    });
+
+    if (!isValid) {
+        e.preventDefault(); // Останавливаем переход
+        return false;
+    }
+
+    // Если всё ок, продолжаем стандартную логику сбора данных
+    if (currentFrame.length) {
+        const allInputs = currentFrame.find("input, textarea, select");
+        allInputs.each(function () {
+            const name = $(this).attr("name");
+            const type = $(this).attr("type");
+            let value = $(this).val();
+    
+            if (type === "radio") {
+                if ($(this).is(":checked")) {
+                    inputData[name] = value;
+                }
+            } else {
+                if (name) inputData[name] = value;
+            }
+        });
+    }
+
+    page += 1;
+    // ... остальной ваш код (проверка на конец квиза)
+});
         
 
         page += 1;
