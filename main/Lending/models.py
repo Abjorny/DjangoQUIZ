@@ -258,7 +258,12 @@ class ImageForExampleOfWork(models.Model):
         verbose_name_plural = "Изображения примеров работ"
 
 class LendingPage(models.Model):
-    
+    SOCIAL_CHOISE = (
+        ('tg', 'Telegram'),
+        ('whatapp', 'WhatsApp'),
+        ('phone', 'Позвоните'),
+
+    )
     domain = models.CharField(
         max_length=255,
         verbose_name="Доменное имя, вместе с под доменном."
@@ -391,11 +396,20 @@ class LendingPage(models.Model):
         verbose_name = "Изображение стрелка"
     )
 
+    imageFavicon= models.FileField(
+        upload_to = 'lending/data/images/',
+        verbose_name = "Изображение favicon",
+        null=True,
+        blank=True
+    )
+
     accentColor = models.CharField(
         max_length = 255,
         verbose_name = "Основной цвет"
     )
     
+    prioritet = models.CharField(max_length=300, choices = SOCIAL_CHOISE, default="telegram")
+
     class Meta:
         verbose_name = "Страница"
         verbose_name_plural = "Страницы"

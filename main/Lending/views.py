@@ -12,7 +12,12 @@ def lendingForamted(lending: LendingPage, utmContent = None):
             if str(utmContent) in example.utm_content:
                 utmExampleWork = example.examplesOfWork
                 break
+    order = ["tg", "whatapp", "phone"]
 
+    if lending.prioritet in order:
+        order.remove(lending.prioritet)
+        order.insert(0, lending.prioritet)
+        
     response_data = {
         "domain" : lending.domain,
         "title" : lending.title,
@@ -21,14 +26,16 @@ def lendingForamted(lending: LendingPage, utmContent = None):
         "logo" : lending.logo.url,
         "chatid" : lending.chatid, 
         "number" : lending.number,
+        "order": order,
         "examples": utmExampleWork if utmExampleWork is not None else lending.examplesOfWork,
-       "number_whatsap" : lending.number_whatsap,
+        "number_whatsap" : lending.number_whatsap,
         "username_telegram" : lending.username_telegram,
         "blackout" : lending.blackout,
         "description" : lending.description,
         "title_slider" : lending.title_slider,
         "preview_slider" : lending.preview_slider.url,
-        "imageArrow" : lending.imageArrow.url,
+        "imageArrow" : lending.imageArrow.url if lending.imageArrow else "",
+        "imageFavicon": lending.imageFavicon.url if lending.imageFavicon else "",
         "imageCheckBoxPolit" : lending.imageCheckBoxPolit.url,
         "imageCheckBox" : lending.imageCheckBox.url,
         "title_swaper" : lending.title_swaper,

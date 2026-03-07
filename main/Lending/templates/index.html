@@ -13,67 +13,65 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?_v=20250109001415" />
 	<link rel="stylesheet" href="{% static 'css/style.min.css' %}?v=1.0.4" />
 
-	<link rel="shortcut icon" href="{% static 'img/header/logo.png' %}" />
+	<link rel="shortcut icon" href="{{landingPage.imageFavicon}}" />
 	<script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/inputmask/dist/inputmask.min.js"></script>
 	<script defer type="module" src="{% static 'js/modalPhone.js' %}"></script>
 	<script defer src="{% static 'js/generateQuiz.js' %}"></script>
-<script defer src="{% static 'js/app.js' %}?v=1.0.0"></script>
+	<script defer src="{% static 'js/app.js' %}?v=1.0.0"></script>
 
 	<script defer type="module" src="{% static 'js/quizCall.js' %}"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<style>
 		body.lock {
-	overflow: hidden;
-}
-		/* Success popup */
-.popup-success {
-	position: fixed;
-	inset: 0;
-	background: rgba(0,0,0,0.6);
-	display: none; /* по-умолчанию скрыт */
-	align-items: center;
-	justify-content: center;
-	z-index: 9999;
-	transition: opacity 0.25s ease;
-	opacity: 0;
-	pointer-events: none;
-}
-.popup-success__wrapper {
-	width: 100%;
-	max-width: 520px;
-	padding: 20px;
-	box-sizing: border-box;
-}
-.popup-success__content {
-	background: #ffffff;
-	color: #111;
-	padding: 22px 30px;
-	border-radius: 12px;
-	box-shadow: 0 8px 30px rgba(0,0,0,0.18);
-	font-size: 18px;
-	text-align: center;
-	line-height: 1.2;
-}
-.popup-success--show {
-	display: flex;
-	opacity: 1;
-	pointer-events: auto;
-	animation: popupSuccessIn 220ms ease;
-}
-@keyframes popupSuccessIn {
-	from { transform: translateY(8px); opacity: 0; }
-	to   { transform: translateY(0); opacity: 1; }
-}
+			overflow: hidden;
+		}
+		.popup-success {
+			position: fixed;
+			inset: 0;
+			background: rgba(0,0,0,0.6);
+			display: none; /* по-умолчанию скрыт */
+			align-items: center;
+			justify-content: center;
+			z-index: 9999;
+			transition: opacity 0.25s ease;
+			opacity: 0;
+			pointer-events: none;
+		}
+		.popup-success__wrapper {
+			width: 100%;
+			max-width: 520px;
+			padding: 20px;
+			box-sizing: border-box;
+		}
+		.popup-success__content {
+			background: #ffffff;
+			color: #111;
+			padding: 22px 30px;
+			border-radius: 12px;
+			box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+			font-size: 18px;
+			text-align: center;
+			line-height: 1.2;
+		}
+		.popup-success--show {
+			display: flex;
+			opacity: 1;
+			pointer-events: auto;
+			animation: popupSuccessIn 220ms ease;
+		}
+		@keyframes popupSuccessIn {
+			from { transform: translateY(8px); opacity: 0; }
+			to   { transform: translateY(0); opacity: 1; }
+		}
 
-/* адаптация под общий стиль (необязательно) */
-.popup-success__content p {
-	margin: 0;
-	font-weight: 600;
-}
+		/* адаптация под общий стиль (необязательно) */
+		.popup-success__content p {
+			margin: 0;
+			font-weight: 600;
+		}
 
-	</style>
-	<style>
+
 		.radio-form__item input:checked+label::before {
 			background: url({{landingPage.imageCheckBox}}) 0 0 / contain no-repeat;
 		}
@@ -88,29 +86,16 @@
 		}
 
 		.button button {
-			background-color: {
-					{
-					accentColor
-				}
-			}
-
-			;
+			background-color: {{accentColor}};
 		}
 
 		.policy label a {
-			color: {
-					{
-					accentColor
-				}
-			}
-
-			;
+			color: {{accentColor}};
 		}
 	</style>
 </head>
 
 <body>
-
 	<div class="wrapper">
 		<header class="header fix-block">
 			<div class="header__container">
@@ -179,7 +164,7 @@
 							<div class="quiz__slide swiper-slide">
 								<div class="quiz__preloader">
 									<div class="quiz__text-preloader">
-										<span>Рассчитываем</span>
+										<span>Обработка</span>
 									</div>
 									<div class="quiz__preloader-circle">
 										<span></span>
@@ -188,31 +173,55 @@
 								<div id="quiz-end" class="quiz__content">
 									<form class="radio-form" action="#">
 										<div class="radio-form__items">
-											<div class="radio-form__item">
-												<input value="phone" type="radio" id="phone" name="point" />
-												<label for="phone" id="label-phone"></label>
-											</div>
-											<div class="radio-form__item">
-												<input value="whatapp" checked type="radio" id="whatapp" name="point" />
-												<label for="whatapp" id="label-whatsapp"> text
-													<span class="radio-form__color">WhatsApp</span></label>
-											</div>
-											<div class="radio-form__item">
-												<input value="telegram" type="radio" id="tg" name="point" />
-												<label for="tg" id="label-tg"> text
-													<span
-														class="radio-form__color radio-form__color_blue">Telegram</span></label>
-											</div>
+{% for value in landingPage.order %}
+
+    {% if value == "phone" %}
+        <div class="radio-form__item">
+            <input value="phone" type="radio" id="phone" name="point"
+                   {% if forloop.first %}checked{% endif %} />
+            <label for="phone" id="label-phone"></label>
+        </div>
+    {% endif %}
+
+    {% if value == "whatapp" %}
+        <div class="radio-form__item">
+            <input value="whatapp" type="radio" id="whatapp" name="point"
+                   {% if forloop.first %}checked{% endif %} />
+            <label for="whatapp" id="label-whatsapp">
+                text
+                <span class="radio-form__color">WhatsApp</span>
+            </label>
+        </div>
+    {% endif %}
+
+    {% if value == "tg" %}
+        <div class="radio-form__item">
+            <input value="telegram" type="radio" id="tg" name="point"
+                   {% if forloop.first %}checked{% endif %} />
+            <label for="tg" id="label-tg">
+                text
+                <span class="radio-form__color radio-form__color_blue">
+                    Telegram
+                </span>
+            </label>
+        </div>
+    {% endif %}
+
+{% endfor %}
 										</div>
 										<div class="bottom-form">
 											<div class="bottom-form__contact">
-												<input id="contact-form" type="text" name="contact"
-													placeholder="Введите Ваш WhatsApp" value="" />
-												<span class="bottom-form__invalid invalid">Не заполнено поле</span>
+<input id="contact-form"
+       type="{% if landingPage.order.0 == 'tg' %}text{% else %}tel{% endif %}"
+       name="contact"
+       placeholder="{% if landingPage.order.0 == 'phone' %}Введите Ваш телефон{% elif landingPage.order.0 == 'whatapp' %}Введите Ваш WhatsApp{% elif landingPage.order.0 == 'tg' %}Введите Ваш Telegram{% endif %}"
+       value="" />
+
+<span class="bottom-form__invalid invalid">Не заполнено поле</span>
 											</div>
 											<div class="bottom-form__policy policy">
 												<input type="checkbox" checked id="policy" name="privacy_policy" />
-												<label for="policy">Нажимая на кнопку “Получить результат”, Вы даете
+												<label for="policy">Нажимая на кнопку “<span id='title-back-end-button'></span>”, Вы даете
 													согласие на обработку персональных данных и
 													соглашаетесь c
 													<a href="{% url 'polit' %}" target="_blank">Политикой
@@ -263,7 +272,7 @@
 	<section class="portfolio">
 		<div class="portfolio__container">
 			<div class="portfolio__title title">
-				<h3>{{ landingPage.title_swaper }}</h3>
+				<h3>{{ landingPage.title_swaper|safe }}</h3>
 			</div>
 			<div class="hardest-slider-wrapper">
 				<div class="hardest-slider-content">
@@ -350,6 +359,7 @@
 		const landing = {{ landingPage | safe }};
 		const examples = {{ landingPage.examples | safe }};
 		const accentColor = '{{accentColor | safe}}';
+		const defaultPoint = "{{ landingPage.order.0 }}";
 
 		const cleanTitle = stripHTML('{{ landingPage.title_slider|safe }}');
 		const cleanTitleSlider = stripHTML(quizzes.endFrame.title);

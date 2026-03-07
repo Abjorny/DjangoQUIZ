@@ -48,7 +48,7 @@ $(document).ready(function () {
   const whatapp = document.getElementById("whatapp");
   const tg = document.getElementById("tg");
   const input = document.getElementById("contact-form");
-  let status = true;
+  let status = false;
 
   phone.onclick = function () {
     status = true;
@@ -133,21 +133,23 @@ $(document).ready(function () {
     popup.addEventListener("click", (e) => closePopup(e))
   );
 
-  function initSliders() {
-    if (document.querySelector(".quiz__slider"))
-      new Swiper(".quiz__slider", {
-        slidesPerView: 1,
-        spaceBetween: 200,
-        autoHeight: true,
-        speed: 1100,
-        allowTouchMove: false,
-        navigation: {
-          prevEl: ".quiz-button-prev",
-          nextEl: ".quiz-button-next",
-        },
-      });
+function initSliders() {
+  if (document.querySelector(".quiz__slider")) {
+    const quizSwiper = new Swiper(".quiz__slider", {
+      slidesPerView: 1,
+      spaceBetween: 200,
+      autoHeight: true,
+      speed: 1100,
+      allowTouchMove: false, 
+      navigation: false,      
+    });
+
+    window.quizSwiper = quizSwiper;
   }
-  initSliders();
+}
+
+initSliders();
+
 
   // ======= hardest slider =======
   const hardestMainSlider = document.querySelector(".hardest-slider");
