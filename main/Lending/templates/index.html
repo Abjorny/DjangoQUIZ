@@ -1,6 +1,4 @@
 {% load static %}
-{% csrf_token %}
-
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -8,7 +6,6 @@
 	<title>{{ landingPage.title_meta }}</title>
 	<meta name="description" content="{{ landingPage.description_meta }}">
 	<meta charset="UTF-8" />
-	{{ head | safe }}
 	<meta name="format-detection" content="telephone=no" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?_v=20250109001415" />
 	<link rel="stylesheet" href="{% static 'css/style.min.css' %}?v=1.0.4" />
@@ -22,7 +19,7 @@
 
 	<script defer type="module" src="{% static 'js/quizCall.js' %}"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<style>
+	<!-- <style>
 		body.lock {
 			overflow: hidden;
 		}
@@ -65,7 +62,6 @@
 			to   { transform: translateY(0); opacity: 1; }
 		}
 
-		/* адаптация под общий стиль (необязательно) */
 		.popup-success__content p {
 			margin: 0;
 			font-weight: 600;
@@ -92,10 +88,15 @@
 		.policy label a {
 			color: {{accentColor}};
 		}
-	</style>
+	</style> -->
+
 </head>
 
 <body>
+	{% csrf_token %}
+
+	{{ head | safe }}
+
 	<div class="wrapper">
 		<header class="header fix-block">
 			<div class="header__container">
