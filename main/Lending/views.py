@@ -104,7 +104,6 @@ def index(request):
         "legth": len(question_data)
     }
 
-    print(endFrameData)
     if utm_content is not None:
         if utm_content.isdigit():
             utm_content = int(utm_content)
