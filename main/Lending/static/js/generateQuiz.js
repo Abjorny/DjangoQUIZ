@@ -10,6 +10,10 @@ $(document).ready(function () {
     return html.replace(/text/g, quizzes.endFrame.text_whatsapp);
   });
 
+    $("#label-max").html(function (index, html) {
+    return html.replace(/text/g, quizzes.endFrame.text_max);
+  });
+
   $("#label-phone").text(quizzes.endFrame.text_phone);
 
   function getRadioModel(questTitle, inputs, ids) {

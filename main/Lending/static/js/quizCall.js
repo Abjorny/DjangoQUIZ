@@ -49,7 +49,7 @@ $(document).ready(function () {
     window.quizSwiper.slidePrev();
   });
 
-  $(".quiz-button-next").on("click", function (e) {
+  $(".quiz-button-next").on("click", async function (e) {
     e.preventDefault();
     const currentButton = $(this);
     const currentFrame = currentButton.closest(".quiz__slide");
@@ -78,8 +78,13 @@ $(document).ready(function () {
       }
       $("#quizButtonSet").click();
     }
-    console.log(page, quizzes.legth, quizzes.two_etap_notify)
 
+    if (quizzes.legth < page){
+      if(quizzes.two_etap_notify){
+        console.log("send", inputDataString);
+        await sendMessage(inputDataString, chatId, "нету", "", inputDataString);
+      }
+    }
     window.quizSwiper.slideNext();
   });
 

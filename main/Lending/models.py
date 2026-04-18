@@ -198,10 +198,11 @@ class Quiz(models.Model):
         return self.title
     
 class EndFrame(models.Model):
-    title = models.CharField(max_length=255) 
-    text_phone = models.CharField(max_length=255)
-    text_telegram = models.CharField(max_length=255)
-    text_whatsapp = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, null=True, blank=True) 
+    text_phone = models.CharField(max_length=255, null=True, blank=True)
+    text_telegram = models.CharField(max_length=255, null=True, blank=True)
+    text_whatsapp = models.CharField(max_length=255, null=True, blank=True)
+    text_max = models.CharField(max_length=255, null=True, blank=True)
     text_button = models.CharField(max_length=255)
     
     class Meta:

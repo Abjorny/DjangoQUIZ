@@ -17,7 +17,6 @@
 	<script defer type="module" src="{% static 'js/modalPhone.js' %}"></script>
 	<script defer src="{% static 'js/generateQuiz.js' %}"></script>
 	<script defer src="{% static 'js/app.js' %}?v=1.0.0"></script>
-
 	<script defer type="module" src="{% static 'js/quizCall.js' %}"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	{{ head | safe }}
@@ -177,7 +176,7 @@
 										<div class="radio-form__items">
 {% for value in landingPage.order %}
 
-    {% if value == "phone" %}
+    {% if value == "phone"  and quizzes.endFrame.text_phone != "" %}
         <div class="radio-form__item">
             <input value="phone" type="radio" id="phone" name="point"
                    {% if forloop.first %}checked{% endif %} />
@@ -185,7 +184,7 @@
         </div>
     {% endif %}
 
-    {% if value == "whatapp" %}
+    {% if value == "whatapp" and quizzes.endFrame.text_whatsapp != "" %}
         <div class="radio-form__item">
             <input value="whatapp" type="radio" id="whatapp" name="point"
                    {% if forloop.first %}checked{% endif %} />
@@ -196,7 +195,7 @@
         </div>
     {% endif %}
 
-    {% if value == "tg" %}
+    {% if value == "tg" and quizzes.endFrame.text_telegram != "" %}
         <div class="radio-form__item">
             <input value="telegram" type="radio" id="tg" name="point"
                    {% if forloop.first %}checked{% endif %} />
@@ -209,6 +208,18 @@
         </div>
     {% endif %}
 
+	    {% if value == "max" and quizzes.endFrame.text_max != "" %}
+        <div class="radio-form__item">
+            <input value="max" type="radio" id="max" name="point"
+                   {% if forloop.first %}checked{% endif %} />
+            <label for="max" id="label-max">
+                text
+                <span class="radio-form__color radio-form__color_blue">
+                    Max
+                </span>
+            </label>
+        </div>
+    {% endif %}
 {% endfor %}
 										</div>
 										<div class="bottom-form">

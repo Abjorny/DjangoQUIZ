@@ -47,28 +47,47 @@ $(document).ready(function () {
   const phone = document.getElementById("phone");
   const whatapp = document.getElementById("whatapp");
   const tg = document.getElementById("tg");
+  const max = document.getElementById("max");
+
+
   const input = document.getElementById("contact-form");
   let status = false;
 
+if (phone) {
   phone.onclick = function () {
     status = true;
     input.placeholder = "Введите Ваш телефон";
     input.type = "tel";
     input.value = "";
   };
+}
+
+if (whatapp) {
   whatapp.onclick = function () {
     status = true;
     input.placeholder = "Введите Ваш WhatsApp";
     input.type = "tel";
     input.value = "";
   };
+}
+
+if (tg) {
   tg.onclick = function () {
     status = false;
     input.placeholder = "Введите Ваш Telegram";
     input.type = "text";
     input.value = "";
   };
+}
 
+if (max) {
+  max.onclick = function () {
+    status = false;
+    input.placeholder = "Введите Ваш Max";
+    input.type = "text";
+    input.value = "";
+  };
+}
   input.addEventListener("input", function (e) {
     if (status) {
       let value = e.target.value.replace(/\D/g, "");
