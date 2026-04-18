@@ -82,7 +82,7 @@ $(document).ready(function () {
     if (quizzes.legth < page) {
       if (quizzes.two_etap_notify) {
         console.log("send", inputDataString);
-        await sendMessage(inputDataString, chatId, "нету", "", inputDataString);
+        sendMessage(inputDataString, chatId, "нету", "", inputDataString);
       }
     }
     window.quizSwiper.slideNext();

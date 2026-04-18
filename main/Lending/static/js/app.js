@@ -49,45 +49,44 @@ $(document).ready(function () {
   const tg = document.getElementById("tg");
   const max = document.getElementById("max");
 
-
   const input = document.getElementById("contact-form");
   let status = false;
 
-if (phone) {
-  phone.onclick = function () {
-    status = true;
-    input.placeholder = "Введите Ваш телефон";
-    input.type = "tel";
-    input.value = "";
-  };
-}
+  if (phone) {
+    phone.onclick = function () {
+      status = true;
+      input.placeholder = "Введите Ваш телефон";
+      input.type = "tel";
+      input.value = "";
+    };
+  }
 
-if (whatapp) {
-  whatapp.onclick = function () {
-    status = true;
-    input.placeholder = "Введите Ваш WhatsApp";
-    input.type = "tel";
-    input.value = "";
-  };
-}
+  if (whatapp) {
+    whatapp.onclick = function () {
+      status = true;
+      input.placeholder = "Введите Ваш WhatsApp";
+      input.type = "tel";
+      input.value = "";
+    };
+  }
 
-if (tg) {
-  tg.onclick = function () {
-    status = false;
-    input.placeholder = "Введите Ваш Telegram";
-    input.type = "text";
-    input.value = "";
-  };
-}
+  if (tg) {
+    tg.onclick = function () {
+      status = false;
+      input.placeholder = "Введите Ваш Telegram";
+      input.type = "text";
+      input.value = "";
+    };
+  }
 
-if (max) {
-  max.onclick = function () {
-    status = false;
-    input.placeholder = "Введите Ваш Max";
-    input.type = "text";
-    input.value = "";
-  };
-}
+  if (max) {
+    max.onclick = function () {
+      status = false;
+      input.placeholder = "Введите Ваш Max";
+      input.type = "text";
+      input.value = "";
+    };
+  }
   input.addEventListener("input", function (e) {
     if (status) {
       let value = e.target.value.replace(/\D/g, "");
@@ -103,7 +102,7 @@ if (max) {
 
   const popups = document.querySelectorAll(".popup");
   const popupButton = document.querySelectorAll(
-    ".header__social, .header__tel-text"
+    ".header__social, .header__tel-text",
   );
   const body = document.body;
   const popupWrapper = document.querySelectorAll(".popup__wrapper");
@@ -149,26 +148,25 @@ if (max) {
   });
 
   popups.forEach((popup) =>
-    popup.addEventListener("click", (e) => closePopup(e))
+    popup.addEventListener("click", (e) => closePopup(e)),
   );
 
-function initSliders() {
-  if (document.querySelector(".quiz__slider")) {
-    const quizSwiper = new Swiper(".quiz__slider", {
-      slidesPerView: 1,
-      spaceBetween: 200,
-      autoHeight: true,
-      speed: 1100,
-      allowTouchMove: false, 
-      navigation: false,      
-    });
+  function initSliders() {
+    if (document.querySelector(".quiz__slider")) {
+      const quizSwiper = new Swiper(".quiz__slider", {
+        slidesPerView: 1,
+        spaceBetween: 200,
+        autoHeight: true,
+        speed: 1100,
+        allowTouchMove: false,
+        navigation: false,
+      });
 
-    window.quizSwiper = quizSwiper;
+      window.quizSwiper = quizSwiper;
+    }
   }
-}
 
-initSliders();
-
+  initSliders();
 
   // ======= hardest slider =======
   const hardestMainSlider = document.querySelector(".hardest-slider");
@@ -202,7 +200,7 @@ initSliders();
 
     const imageIndex = Math.min(
       currentImageIndex,
-      slider.thumbnails.length - 1
+      slider.thumbnails.length - 1,
     );
     hardestMainImage.src = slider.thumbnails[imageIndex];
     hardestCurrentImageIndex = imageIndex;

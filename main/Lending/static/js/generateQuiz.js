@@ -1,20 +1,32 @@
 $(document).ready(function () {
+  function setupLabel(selector, text) {
+    const el = $(selector);
+
+    if (!el.length) return;
+    if (!text || !text.trim()) {
+      el.closest(".radio-form__item").remove();
+      return;
+    }
+
+    el.contents()
+      .filter(function () {
+        return this.nodeType === 3;
+      })
+      .first()
+      .replaceWith(text + " ");
+  }
   $("#quiz-title-model").html(quizzes.title);
   $("#quiz-title-model-end").html(quizzes.endFrame.title);
   $("#button-end-model-quiz").html(quizzes.endFrame.text_button);
   $("#title-back-end-button").html(quizzes.endFrame.text_button);
-  $("#label-tg").html(function (index, html) {
-    return html.replace(/text/g, quizzes.endFrame.text_telegram);
-  });
-  $("#label-whatsapp").html(function (index, html) {
-    return html.replace(/text/g, quizzes.endFrame.text_whatsapp);
-  });
-
-    $("#label-max").html(function (index, html) {
-    return html.replace(/text/g, quizzes.endFrame.text_whatsapp);
-  });
-
-  $("#label-phone").text(quizzes.endFrame.text_phone);
+  setupLabel("#label-tg", quizzes.endFrame.text_telegram);
+  setupLabel("#label-whatsapp", quizzes.endFrame.text_whatsapp);
+  setupLabel("#label-max", quizzes.endFrame.text_max);
+  if (!quizzes.endFrame.text_phone || !quizzes.endFrame.text_phone.trim()) {
+    $("#label-phone").closest(".radio-form__item").remove();
+  } else {
+    $("#label-phone").text(quizzes.endFrame.text_phone);
+  }
 
   function getRadioModel(questTitle, inputs, ids) {
     const radioItems = inputs

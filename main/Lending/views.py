@@ -12,12 +12,15 @@ def lendingForamted(lending: LendingPage, utmContent = None):
             if str(utmContent) in example.utm_content:
                 utmExampleWork = example.examplesOfWork
                 break
+    
     order = ["tg", "whatapp", "phone", "max"]
 
     if lending.prioritet in order:
         order.remove(lending.prioritet)
         order.insert(0, lending.prioritet)
-        
+    
+    order = ["tg", "whatapp", "phone", "max"][::-1]
+    
     response_data = {
         "domain" : lending.domain,
         "title" : lending.title,
