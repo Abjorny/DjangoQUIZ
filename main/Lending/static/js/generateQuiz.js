@@ -80,8 +80,6 @@ $(document).ready(function () {
     `;
   }
 
-
-
   function getInputModel(questTitle, inputs, ids) {
     const inputFields = inputs
       .map(
@@ -126,16 +124,11 @@ $(document).ready(function () {
           getDropdownModel(question.text, question.inputs_data, "btn-next"),
         );
       } else {
-const $slide = $(getInputModel(
-  question.text,
-  question.inputs_data,
-  "btn-next"
-));
+        const $slide = $(
+          getInputModel(question.text, question.inputs_data, "btn-next"),
+        );
 
-containerModal.prepend($slide);
-
-
-
+        containerModal.prepend($slide);
       }
     } else if (question.question_type === "radio") {
       containerModal.prepend(
@@ -146,14 +139,9 @@ containerModal.prepend($slide);
         getDropdownModel(question.text, question.inputs_data),
       );
     } else {
-const $slide = $(getInputModel(
-  question.text,
-  question.inputs_data,
-));
+      const $slide = $(getInputModel(question.text, question.inputs_data));
 
-containerModal.prepend($slide);
-
-
+      containerModal.prepend($slide);
     }
   });
   $(document).on("input", ".quiz__slide input[type='text']", function () {

@@ -99,6 +99,8 @@ def index(request):
         "title" : quiz.title,
         "endFrame" : endFrameData,
         "questions" : question_data[::-1],
+        "two_etap_notify": quiz.two_etap_notify,
+        "legth": len(question_data)
     }
 
     

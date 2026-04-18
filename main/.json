@@ -1,11 +1,41 @@
 [
   {
-    "text": "111",
-    "images": [
+    "text": "Вы зарегистрированы в качестве ИП или ООО?",
+    "question_type": "radio",
+    "options": [
+      { "text": "Да, я ИП", "placeholder": "", "type_text": "" },
+      { "text": "У меня ООО", "placeholder": "", "type_text": "" },
+      { "text": "Я самозанятый", "placeholder": "", "type_text": "" },
       {
-        "url": "/media/lending/data/examplesOfWork/f69e0cb330494337b2c74fa4be85ca3e.png",
-        "mobaleUrl": "/media/lending/data/examplesOfWork/f69e0cb330494337b2c74fa4be85ca3e.png"
+        "text": "Я физ. лицо, пока просто интересуюсь",
+        "placeholder": "",
+        "type_text": ""
       }
+    ]
+  },
+  {
+    "text": "Вы ранее сотрудничали с сервисами Яндекс еда или Delivery club?",
+    "question_type": "radio",
+    "options": [
+      { "text": "Нет", "placeholder": "", "type_text": "" },
+      {
+        "text": "Да, но потом потеряли доступ к ЛК",
+        "placeholder": "",
+        "type_text": ""
+      },
+      {
+        "text": "Да, но расторгли договор",
+        "placeholder": "",
+        "type_text": ""
+      },
+      { "text": "Точно не помню", "placeholder": "", "type_text": "" }
+    ]
+  },
+  {
+    "text": "В каком городе находится Ваше заведение?",
+    "question_type": "text",
+    "options": [
+      { "text": "", "placeholder": "Укажите название города", "type_text": "" }
     ]
   }
 ]

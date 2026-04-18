@@ -189,6 +189,7 @@ class Quiz(models.Model):
         default=list
     )
     
+    two_etap_notify = models.BooleanField(default=False, verbose_name="уведомить после квиза")
     class Meta:
         verbose_name = "Квизы"
         verbose_name_plural = "Квиз"

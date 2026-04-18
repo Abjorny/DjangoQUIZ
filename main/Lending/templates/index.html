@@ -3,6 +3,7 @@
 <html lang="ru">
 
 <head>
+	
 	<title>{{ landingPage.title_meta }}</title>
 	<meta name="description" content="{{ landingPage.description_meta }}">
 	<meta charset="UTF-8" />
@@ -19,7 +20,9 @@
 
 	<script defer type="module" src="{% static 'js/quizCall.js' %}"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<!-- <style>
+	{{ head | safe }}
+
+	<style>
 		body.lock {
 			overflow: hidden;
 		}
@@ -88,14 +91,12 @@
 		.policy label a {
 			color: {{accentColor}};
 		}
-	</style> -->
-
+	</style>
 </head>
 
 <body>
 	{% csrf_token %}
 
-	{{ head | safe }}
 
 	<div class="wrapper">
 		<header class="header fix-block">
@@ -355,6 +356,7 @@
 			div.innerHTML = html;
 			return div.textContent || div.innerText || "";
 		}
+	  const requestId = Date.now() + "_" + Math.random().toString(36).substr(2, 5);
 
 		const quizzes = {{ quizzes_json | safe }};
 		const landing = {{ landingPage | safe }};
@@ -364,7 +366,7 @@
 
 		const cleanTitle = stripHTML('{{ landingPage.title_slider|safe }}');
 		const cleanTitleSlider = stripHTML(quizzes.endFrame.title);
-
+		
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js?_v=20250109001415"></script>
 	

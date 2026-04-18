@@ -78,6 +78,7 @@ $(document).ready(function () {
       }
       $("#quizButtonSet").click();
     }
+    console.log(page, quizzes.legth, quizzes.two_etap_notify)
 
     window.quizSwiper.slideNext();
   });
