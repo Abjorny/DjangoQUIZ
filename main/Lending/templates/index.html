@@ -176,7 +176,7 @@
 										<div class="radio-form__items">
 {% for value in landingPage.order %}
 
-    {% if value == "phone"  and quizzes.endFrame.text_phone != "" %}
+    {% if value == "phone"  and quizzes.endFrame.text_phone %}
         <div class="radio-form__item">
             <input value="phone" type="radio" id="phone" name="point"
                    {% if forloop.first %}checked{% endif %} />
@@ -184,7 +184,7 @@
         </div>
     {% endif %}
 
-    {% if value == "whatapp" and quizzes.endFrame.text_whatsapp != "" %}
+    {% if value == "whatapp" and quizzes.endFrame.text_whatsapp %}
         <div class="radio-form__item">
             <input value="whatapp" type="radio" id="whatapp" name="point"
                    {% if forloop.first %}checked{% endif %} />
@@ -195,7 +195,7 @@
         </div>
     {% endif %}
 
-    {% if value == "tg" and quizzes.endFrame.text_telegram != "" %}
+    {% if value == "tg" and quizzes.endFrame.text_telegram %}
         <div class="radio-form__item">
             <input value="telegram" type="radio" id="tg" name="point"
                    {% if forloop.first %}checked{% endif %} />
@@ -208,7 +208,7 @@
         </div>
     {% endif %}
 
-	    {% if value == "max" and quizzes.endFrame.text_max != "" %}
+	    {% if value == "max" and quizzes.endFrame.text_max %}
         <div class="radio-form__item">
             <input value="max" type="radio" id="max" name="point"
                    {% if forloop.first %}checked{% endif %} />

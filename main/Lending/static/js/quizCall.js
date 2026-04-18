@@ -69,7 +69,7 @@ $(document).ready(function () {
         }
       });
     }
-    console.log(inputData)
+    console.log(inputData);
 
     page += 1;
     if (page > $(".quiz-button-next").length) {
@@ -79,8 +79,8 @@ $(document).ready(function () {
       $("#quizButtonSet").click();
     }
 
-    if (quizzes.legth < page){
-      if(quizzes.two_etap_notify){
+    if (quizzes.legth < page) {
+      if (quizzes.two_etap_notify) {
         console.log("send", inputDataString);
         await sendMessage(inputDataString, chatId, "нету", "", inputDataString);
       }
