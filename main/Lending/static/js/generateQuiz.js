@@ -11,7 +11,7 @@ $(document).ready(function () {
   });
 
     $("#label-max").html(function (index, html) {
-    return html.replace(/text/g, quizzes.endFrame.text_max);
+    return html.replace(/text/g, quizzes.endFrame.text_whatsapp);
   });
 
   $("#label-phone").text(quizzes.endFrame.text_phone);

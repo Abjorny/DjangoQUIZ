@@ -264,6 +264,7 @@ class LendingPage(models.Model):
         ('tg', 'Telegram'),
         ('whatapp', 'WhatsApp'),
         ('phone', 'Позвоните'),
+        ('max', "Max")
 
     )
     domain = models.CharField(

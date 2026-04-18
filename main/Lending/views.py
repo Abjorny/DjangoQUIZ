@@ -12,7 +12,7 @@ def lendingForamted(lending: LendingPage, utmContent = None):
             if str(utmContent) in example.utm_content:
                 utmExampleWork = example.examplesOfWork
                 break
-    order = ["tg", "whatapp", "phone"]
+    order = ["tg", "whatapp", "phone", "max"]
 
     if lending.prioritet in order:
         order.remove(lending.prioritet)
@@ -93,6 +93,7 @@ def index(request):
         "text_phone" : quiz.endFrame.text_phone,
         "text_telegram" : quiz.endFrame.text_telegram,
         "text_whatsapp" : quiz.endFrame.text_whatsapp,
+        "text_max" : quiz.endFrame.text_max,
     }
     
     quizzes_json = {
@@ -103,7 +104,7 @@ def index(request):
         "legth": len(question_data)
     }
 
-    
+    print(endFrameData)
     if utm_content is not None:
         if utm_content.isdigit():
             utm_content = int(utm_content)

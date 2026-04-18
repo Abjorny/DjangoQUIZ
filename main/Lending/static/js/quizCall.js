@@ -78,7 +78,7 @@ $(document).ready(function () {
       }
       $("#quizButtonSet").click();
     }
-
+    console.log(quizzes.legth, quizzes.two_etap_notify)
     if (quizzes.legth < page) {
       if (quizzes.two_etap_notify) {
         console.log("send", inputDataString);

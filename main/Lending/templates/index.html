@@ -176,7 +176,7 @@
 										<div class="radio-form__items">
 {% for value in landingPage.order %}
 
-    {% if value == "phone"  and quizzes.endFrame.text_phone %}
+    {% if value == "phone" and quizzes.endFrame.text_phone %}
         <div class="radio-form__item">
             <input value="phone" type="radio" id="phone" name="point"
                    {% if forloop.first %}checked{% endif %} />
